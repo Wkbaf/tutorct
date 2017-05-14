@@ -1,0 +1,150 @@
+<!-- result page for find tutor by subject -->
+<div class="page-title P30">
+    <h2 class="fl-l">Danh Sách Gia Sư</h2>
+</div>
+<div class="row P30 " style="background-color: #fff">
+    <!-- <div class="col-sm-4">
+        <select class="form-control" ng-controller="listMon" ng-model="monhoc.tenmon" ng-options="mon.tenmon for mon in monhoc">
+            <option value="">Tất cả các môn</option>
+        </select>
+    </div> -->
+    <div class="row">
+        <form class="form-inline" ng-submit="findTutorBySubject()">
+            <div class="form-group">
+                <b>Môn Học: </b>
+                <select class="form-control" ng-controller="listMon" ng-model="monhoc.tenmon" ng-options="mon.tenmon for mon in monhoc">
+                    <option value="">-- chọn môn học --</option>
+                </select>
+            </div>
+            <!-- <div class="form-group">
+                <b> Nơi Có Thể Dạy: </b>
+                <select class="form-control" ng-model="search.noiday" ng-options="noi for noi in daytai">
+                    <option value="">Nơi có thể dạy</option>
+                </select>
+                
+            </div> -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Tìm</button>
+            </div>            
+        </form>
+    </div>
+</div>
+<!--binh thuong-->
+<div class="row" ng-init="listTutor()" ng-hide="show">
+<!-- Course  | filter:{daymon:monhoc.tenmon.tenmon}-->
+    <div class="col-xs-12 col-md-6" ng-repeat="gs in filteredPage">       
+        <div class="block-courses_details clearfix bg-0 P30">
+            <div class="col-xs-12 col-sm-3 col-md-5 col-lg-4">
+                <div class="column-description P30 bg-4 corner">
+                    <h5 class="title">{{gs.giasu.hoten}}</h5>
+                    <div class="text">
+                        <p>Đang công tác tại {{gs.giasu.noicongtac}} </p>
+                        <div ng-repeat="x in gs.rating.danhgia">
+                            <span ng-init="$parent.khanang = ($parent.khanang + x.khanang); "></span>
+                            <span ng-init="$parent.phuongphap = ($parent.phuongphap + x.phuongphap); "></span>
+                            <span ng-init="$parent.tinhthan = ($parent.tinhthan + x.tinhthan); "></span>
+                            <span ng-init="$parent.tucach = ($parent.tucach + x.tucach); "></span>
+                            <span ng-init="$parent.avergate = ($parent.khanang + $parent.tinhthan +$parent.phuongphap + $parent.tucach)/(4*gs.rating.danhgia.length)"></span></div>
+                        <div>
+                        <span average-star-rating ng-model="avergate" max="5"></span></div>
+                    </div>
+                </div>
+
+                <div class="col-xs-6 col-sm-12 team-img-container">
+                    <img class="img-responsive bgImgPng" ng-src="/upload/{{gs.user.avatar}}">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-9 col-md-7 col-lg-8">
+                <div class="detailBox">
+                    <p class="address">
+                        <i class="icon-location base-text-color"></i>
+                        <span color="#000">{{gs.giasu.diachi}}</span>
+                    </p>
+                    <p>Ngày sinh: {{gs.giasu.ngaysinh | date: "dd-MM-yyyy"}}</p>
+                    <h6>Dạy Môn:</h6>
+                    <ul style="list-style-type: square; margin-left: 20px">
+                        <li ng-repeat="mon in gs.giasu.daymon">{{mon}}</li>
+                    </ul> 
+                    <h6>Nơi có thể dạy:</h6>    
+                    <ul style="list-style-type: square; margin-left: 20px">
+                        <li ng-repeat="noi in gs.giasu.noiday">{{noi}}</li>
+                    </ul>                                   
+                    <h6>Kinh Nghiệm:</h6>
+                    <p>{{gs.giasu.kinhnghiem}}</p>
+                    <a ui-sref="contactgiasu({giasuId:gs.giasu._id})" class="btnBgWhite">Liên Lạc</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+<!-- /Course -->
+<pagination
+            boundary-links="true"
+            max-size="3"
+            items-per-page="itemsPerPage"
+            total-items="giasu.length"
+            ng-model="currentPage"
+            ng-change="pageChanged(giasu, 1)">
+</pagination>
+</div>
+
+<!--ket qua tim gia su theo mon-->
+<div class="row" ng-show="show">
+<!-- Course  | filter:{daymon:monhoc.tenmon.tenmon}-->
+    <div class="col-xs-12 col-md-6" ng-repeat="gs in giasu" >       
+        <div class="block-courses_details clearfix bg-0 P30">
+            <div class="col-xs-12 col-sm-3 col-md-5 col-lg-4">
+                <div class="column-description P30 bg-4 corner">
+                    <h5 class="title">{{gs.giasu.hoten}}</h5>
+                    <div class="text">
+                        <p>Đang công tác tại {{gs.giasu.noicongtac}} </p>
+                        <div ng-repeat="x in gs.rating.danhgia">
+                            <span ng-init="$parent.khanang = ($parent.khanang + x.khanang); "></span>
+                            <span ng-init="$parent.phuongphap = ($parent.phuongphap + x.phuongphap); "></span>
+                            <span ng-init="$parent.tinhthan = ($parent.tinhthan + x.tinhthan); "></span>
+                            <span ng-init="$parent.tucach = ($parent.tucach + x.tucach); "></span>
+                            <span ng-init="$parent.avergate = ($parent.khanang + $parent.tinhthan +$parent.phuongphap + $parent.tucach)/(4*gs.rating.danhgia.length)"></span></div>
+                        <div>
+                        <span average-star-rating ng-model="avergate" max="5"></span></div>
+                    </div>
+                </div>
+
+                <div class="col-xs-6 col-sm-12 team-img-container">
+                    <img class="img-responsive bgImgPng" ng-src="/upload/{{gs.user.avatar}}">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-9 col-md-7 col-lg-8">
+                <div class="detailBox">
+                    <p class="address">
+                        <i class="icon-location base-text-color"></i>
+                        <span color="#000">{{gs.giasu.diachi}}</span>
+                    </p>
+                    <p>Ngày sinh: {{gs.giasu.ngaysinh | date: "dd-MM-yyyy"}}</p>
+                    <h6>Dạy Môn:</h6>
+                    <ul style="list-style-type: square; margin-left: 20px">
+                        <li ng-repeat="mon in gs.giasu.daymon">{{mon}}</li>
+                    </ul> 
+                    <h6>Nơi có thể dạy:</h6>    
+                    <ul style="list-style-type: square; margin-left: 20px">
+                        <li ng-repeat="noi in gs.giasu.noiday">{{noi}}</li>
+                    </ul>                                   
+                    <h6>Kinh Nghiệm:</h6>
+                    <p>{{gs.giasu.kinhnghiem}}</p>
+                    <a ui-sref="contactgiasu({giasuId:gs.giasu._id})" class="btnBgWhite">Liên Lạc</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+<!-- /Course -->
+<pagination
+            boundary-links="true"
+            max-size="3"
+            items-per-page="itemsPerPage"
+            total-items="giasu.length"
+            ng-model="currentPage"
+            ng-change="pageChanged(giasu, 1)">
+</pagination>
+</div>

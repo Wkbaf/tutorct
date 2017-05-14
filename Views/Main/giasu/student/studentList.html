@@ -1,0 +1,134 @@
+<!-- giasu/class/index -->
+<div ng-include="'include_myScript.html'"></div>
+<div ng-include="'/giasu/header.html'"></div>
+<div class="row">
+    <div class="col-sm-3 col-md-3">
+        <!--left col-->
+        <div ng-include="'/giasu/leftindex.html'"></div>
+    </div>
+    <!--/col-3-->
+    <div class="col-sm-9 col-md-9" id="mobieDash">
+        <h1>Danh Sách Học Sinh</h1>
+        <div class="row">
+            <div class="col-sm-4 searchInput">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input class="form-control" type="text" ng-model="hsName" placeholder="Nhập giá trị cần tìm">
+            </div>
+        </div>
+        <div class="table-responsive" ng-init="listStudent()">
+            <table id="table_id" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tên Học Sinh</th>
+                        <th>Giới Tính</th>
+                        <th>Ngày Sinh</th>
+                        <th>Tác Vụ</th>
+                    </tr>
+                </thead>
+                <tbody id="items">
+                    <tr ng-repeat="h in filteredPage">
+                        <td>{{$index+1}}</td>
+                        <td>{{h.hocsinh.hs_id.fullname}}</td>
+                        <td>{{h.hocsinh.hs_id.gender}}</td>
+                        <td>{{h.hocsinh.hs_id.ngaysinh | date:"dd-MM-yyyy"}}</td>
+                        <td>
+                            <a ui-sref="studentdetail({studentId:h.hocsinh.hs_id._id})" data-toggle="tooltip" title="Xem chi tiết"><i class="fa fa-info" aria-hidden="true"></i></a>
+                            <a href="#offcanvas-flip" uk-toggle="target: #offcanvas-flip" data-toggle="tooltip" title="Chat với học sinh"><i class="fa fa-comments" aria-hidden="true" ng-click="loadChat(h.hocsinh.hs_username)"></i></a>
+                            <button confirmed-click="baoCaoViPham(h.hocsinh.hs_id._id)" ng-confirm-click="Bạn chắc học sinh này vi phạm?" type="button" class="btn btn-warning" data-toggle="tooltip" title="Học sinh này sẽ bị khóa tài khoản vĩnh viễn">Báo cáo vi phạm</button>
+                            <!-- 
+                            <a confirmed-click="deleteClass(c._id)" ng-confirm-click="Chắc chắn xóa học sinh này?" data-toggle="tooltip" title="Xóa"><i class="fa fa-trash" aria-hidden="true"></i></a> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination
+                boundary-links="true"
+                max-size="3"
+                items-per-page="itemsPerPage"
+                total-items="list.length"
+                ng-model="currentPage"
+                ng-change="pageChanged(list, 1)">
+            </pagination>
+            <p class="notFound">{{message}}</p>
+            <hr>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="pagination" id="myPager"></ul>
+                </div>
+            </div>
+        </div>
+        <!--/table-reponsive-->
+
+    </div>
+</div>
+<!--chat-->
+<div id="offcanvas-flip" uk-offcanvas="flip: true">
+    <div class="uk-offcanvas-bar">
+        <div>
+            <div>
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment"></span> Chat
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                        <ul class="dropdown-menu slidedown">
+                            <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-refresh">
+                                                </span>Refresh</a></li>
+                            <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-ok-sign">
+                                                </span>Available</a></li>
+                            <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-remove">
+                                                </span>Busy</a></li>
+                            <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-time"></span>
+                                                    Away</a></li>
+                            <li class="divider"></li>
+                            <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-off"></span>
+                                                    Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body chatbody">
+                    <ul class="chat">
+                        <li class="left clearfix" ng-repeat="chatMessage in chatMessages">
+                            <!-- nếu bằng current_user định dạng bên trái ngược lại bên phải -->
+                            <span class="chat-img pull-left" ng-if="chatMessage.name==current_user">
+                                <ng-letter-avatar data="{{chatMessage.name}}"></ng-letter-avatar>
+                            </span>
+                            <span class="chat-img pull-right w-40 avatar" ng-if="chatMessage.name!=current_user">
+                                <ng-letter-avatar data="{{chatMessage.name}}" ></ng-letter-avatar>
+                            </span>
+                            <div class="chat-body clearfix" ng-if="chatMessage.name==current_user">
+                                <div class="header">
+                                    <strong class="primary-font">{{chatMessage.name}}</strong> <small class="pull-right text-muted">
+                                    <span class="glyphicon glyphicon-time"></span>{{chatMessage.createdAt | date: 'yyyy-MM-dd'}}</small>
+                                </div>
+                                <p>
+                                    {{chatMessage.message}}
+                                </p>
+                            </div>
+                            <div class="chat-body clearfix" ng-if="chatMessage.name!=current_user">
+                                <div class="header">
+                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+                                    <strong class="pull-right primary-font">{{chatMessage.name}}</strong>
+                                </div>
+                                <p>
+                                    {{chatMessage.message}}
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="btn-input" type="text" class="form-control input-sm" ng-model="chatMes" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button ng-click="sendChat()" class="btn btn-warning btn-sm" id="btn-chat">Gửi</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="uk-button uk-button-default uk-offcanvas-close uk-width-1-1 uk-margin" type="button">Close</button>
+    </div>
+</div>

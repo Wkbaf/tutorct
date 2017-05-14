@@ -1,0 +1,98 @@
+<!-- validate jquery plugin -->
+<script src="js/jquery.validate.js"></script>
+<script src="js/validateForm.js"></script>
+<div ng-include="'/giasu/header.html'"></div>
+<div class="row" >
+    <div class="col-sm-3 col-md-3">
+        <!--left col-->
+        <div ng-include="'/giasu/leftProfile.html'"></div>
+    </div>
+    <!--/col-3-->
+    <div class="col-sm-9 col-md-9 validateForm" style="float: right;width: 70%" ng-init="dashbroadTutorInfo()">
+        <h1 class="formTitle">Profile</h1>
+        <form class="form-horizontal info-form" id="editPersonal" name="editAcc" ng-submit=updateProfile()>
+            <input type="hidden" ng-model="tutor._id">
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="hoten">Họ tên:</label>
+                <div class="col-sm-8">
+                    <input type="text" id="hoten" ng-model="tutor.hoten" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="brday">Ngày sinh:</label>
+                <div class="col-sm-8" >
+                    <input type="date" id="brday" ng-model="tutor.ngaysinh" value="ngaysinh" required>                    
+                    <p>{{ngaysinh}}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="diachi">Địa chỉ:</label>
+                <div class="col-sm-8">
+                    <input type="text" ng-model="tutor.diachi"  id="diachi"  required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="tel">Số điện thoại:</label>
+                <div class="col-sm-8">
+                    <input type="text" id="tel" ng-model="tutor.sdt"  required>
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 col-md-offset-3">
+                    <button type="submit" class="my-form-button base-text-color">Submit</button>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </form>
+    </div>
+    <!--/tab-content-->
+</div>
+<!--/col-9-->
+<div class="row matchHeight-container">
+    <div class="col-xs-12 col-md-6">
+        <div class="block-courses_info P30 bg-2 box">
+            <div class="date">
+                <p>04</p>
+                <p>September</p>
+            </div>
+            <div class="text">
+                <h2 class="title"><span>University</span> Active 2014</h2>
+                <p>
+                    Price of attendance:<span>US$3,750</span>
+                </p>
+                <a href="#" class="custom-btn big">Apply Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="block-courses_info P30 bg-4 box">
+            <div class="date">
+                <p>26</p>
+                <p>November</p>
+            </div>
+            <div class="text">
+                <h2 class="title"><span>Design</span> Construction 2013</h2>
+                <p>
+                    Price of attendance:<span>US$2,130</span>
+                </p>
+                <a href="#" class="custom-btn big">Apply Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="block-courses_info P30 bg-2 box">
+            <div class="date">
+                <p>19</p>
+                <p>September</p>
+            </div>
+            <div class="text">
+                <h2 class="title"><span>Mobile Design Course</span></h2>
+                <p>
+                    Price of attendance:<span>US$2,150</span>
+                </p>
+                <a href="#" class="custom-btn big">Apply Now</a>
+            </div>
+        </div>
+    </div>
+</div>

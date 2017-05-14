@@ -1,0 +1,83 @@
+<div ng-include="include_myScript.html"></div>
+<div ng-include="'/giasu/header.html'"></div>
+<div class="row" ng-init="dashbroadTutorInfo()">
+    <div class="col-sm-3 col-md-3">
+        <!--left col-->
+        <div ng-include="'/giasu/leftProfile.html'"></div>
+    </div>
+    <!--/col-3-->
+    <div class="col-sm-9 col-md-9  validateForm" style="float: right;width: 70%">
+        <h1 class="formTitle">Account</h1>  
+        <!-- <img class="mythumbnail" ng-src="{{thumbnail.dataUrl || '/upload/noimage.png'}}"> -->   
+        <!-- if user chua upload anh moi -> hien thi avatar trong db
+        neu uploading -> hien thi anh uploading -->
+        <img class="mythumbnail" ng-src="/upload/{{user.avatar}}" ng-hide="thumbnail.dataUrl">        
+        <div ng-if="thumbnail.dataUrl">
+            <img class="mythumbnail" ng-src="{{thumbnail.dataUrl}}">
+        </div>
+        <form class="form-horizontal info-form" id="editProfile" name="editAcc" ng-submit=uploadAvatar()>
+            <input type="hidden" ng-model="user._id" name="userid">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="avatar">Your photo:</label>
+                <div class="col-sm-6">
+                    <input type="file" id="avatar" file-model="user.avatar" name="myfile" ng-disabled="uploading"onchange="angular.element(this).scope().photoChange(this.files)" required>
+                </div>
+                <div class="col-sm-3">
+                    <button type="submit" class="base-text-color" style="padding-top: 0px; margin-top: 0px" ng-disabled="uploading">Upload</button>
+                </div>
+            </div>
+            <div ng-show="message">
+                <div ng-class="alert">{{message}}</div>
+            </div>
+        </form>
+    </div>
+    <!--/tab-content-->
+</div>
+<!--/col-9-->
+<div class="row matchHeight-container">
+    <div class="col-xs-12 col-md-6">
+        <div class="block-courses_info P30 bg-2 box">
+            <div class="date">
+                <p>04</p>
+                <p>September</p>
+            </div>
+            <div class="text">
+                <h2 class="title"><span>University</span> Active 2014</h2>
+                <p>
+                    Price of attendance:<span>US$3,750</span>
+                </p>
+                <a href="#" class="custom-btn big">Apply Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="block-courses_info P30 bg-4 box">
+            <div class="date">
+                <p>26</p>
+                <p>November</p>
+            </div>
+            <div class="text">
+                <h2 class="title"><span>Design</span> Construction 2013</h2>
+                <p>
+                    Price of attendance:<span>US$2,130</span>
+                </p>
+                <a href="#" class="custom-btn big">Apply Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="block-courses_info P30 bg-2 box">
+            <div class="date">
+                <p>19</p>
+                <p>September</p>
+            </div>
+            <div class="text">
+                <h2 class="title"><span>Mobile Design Course</span></h2>
+                <p>
+                    Price of attendance:<span>US$2,150</span>
+                </p>
+                <a href="#" class="custom-btn big">Apply Now</a>
+            </div>
+        </div>
+    </div>
+</div>

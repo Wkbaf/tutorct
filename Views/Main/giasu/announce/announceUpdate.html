@@ -1,0 +1,39 @@
+<!-- giasu/class/index -->
+<div ng-include="'include_myScript.html'"></div>
+<div ng-include="'/giasu/header.html'"></div>
+<div class="row">
+    <div class="col-sm-3 col-md-3">
+        <!--left col-->
+        <div ng-include="'/giasu/leftindex.html'"></div>
+    </div>
+    <!--/col-3-->
+    <div>
+        <!-- ng-controller="dashbroadTutorInfo"-->
+        <div class="col-sm-9 col-md-9 validateForm P30 " id="mobieDash" ng-controller="announceDetail">
+            <form class="form-horizontal info-form" id="editProfile mobieDash" name="editAcc" ng-submit=announceUpdate()>
+                <input type="hidden" ng-model="thongbao._id">
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="topic">Chủ Đề:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="topic" ng-model="thongbao.topic" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="pwd">Nội Dung:</label>
+                    <div class="col-sm-8">
+                        <textarea ng-model="thongbao.noidung"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2 col-md-offset-3">
+                        <button type="submit" class="base-text-color">Cập Nhật</button>
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+            </form>
+            <div ng-show="message">
+                <div ng-class="alert">{{message}}</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<section class="main-content">
+		<div class="page-title P30">
+			<h2 class="fl-l">Đăng Nhập</h2>
+
+			<!-- <a class="share-link fl-r" href="#"><i class="icon-export"></i>Share</a> -->
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="content-intro content-intro_s2">
+				</div>
+			</div>
+		</div>
+
+		<div class="row matchHeight-container">
+			<div class="col-xs-12 col-md-6">
+				<div class="info-item P30 bg-7 box">
+					<h1>Tutor.ct Đăng Nhập</h1>
+
+					<form class="info-form" id="login" ng-submit="login()">
+                        <p>
+                            Cùng nhau xây dựng tương lai với Tutor.ct<br>
+                            Tìm kiếm gia sư dễ dàng hơn<br>
+                            Quảng bá hình ảnh và tìm kiếm học sinh.
+                        </p>
+                        <div class="row show-hiden-message" ng-show="message">
+	                        <div class="alert alert-danger" role="alert">
+	                            <strong>Lỗi: </strong> {{message}}
+	                        </div>
+	                    </div>
+                        <input class="inputLog" type="text" id="username" ng-model="reqUser.username" placeholder="Nhập username hoặc email"  required><br>
+                        <input class="inputLog" type="password" id="pwd" ng-model="reqUser.password" placeholder="Password" required><br>
+                        <p class="remeber">
+                            <span><a class="formLink" href="#/forgotpassword">Quên mật khẩu</a></span>
+                        </p>
+                        <!-- <div ng-hide="user.active">
+				                <a href="#/giasu/resendactive" class="hoverLink">Gửi lại link active</a>
+				        </div>    --> 
+                        <div >
+                        	
+                        </div>
+                        <button class="my-form-button base-text-color" type="submit">Login</button>
+                    </form>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-md-6">
+				<div class="post-item P30 box">
+					<h2 class="title">
+						<!-- <img src="images/logo.png" alt="demo" /> -->
+						Tìm kiếm gia sư, học sinh dễ dàng hơn
+					</h2>
+
+					<p>
+						Bạn có thể dễ dàng tìm kiếm gia sư hoặc học sinh thông qua môn học, vị trí của nơi bạn đang ở
+					</p>
+
+					<h5>Bạn là học sinh</h5>
+
+					<p>
+						Hãy đăng ký tài khoản để tìm gia sư và tương tác ngay với gia sư phù hợp
+					</p>
+					<h5>Bạn là gia sư</h5>
+
+					<p>
+						Hãy đăng ký tài khoản để tìm học sinh và quảng bá hình ảnh của bản thân
+					</p>
+
+
+					<!-- <a href="#" class="custom-btn big colored" style="margin-top: 10px;">Join Us Now</a> -->
+				</div>
+			</div>
+		</div>
+
+<script  src="js/jquery-1.11.0.min.js"></script>
+<script  src="js/jquery.nicescroll.min.js"></script>
+<script  src="js/jquery.matchHeight-min.js"></script>
+<script  src="js/jquery.superslides.min.js"></script>
+<script  src="js/jquery.fs.boxer.min.js"></script>
+<script  src="js/jquery.easing.js"></script>
+<script  src="js/jquery.main.js"></script>
+<!-- / settings_box -->
+<script  src="settings_box/settings_box.js"></script>

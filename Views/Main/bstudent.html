@@ -1,0 +1,178 @@
+<section class="main-content" >
+    <div class="page-title P30">
+        <h2 class="fl-l">Đăng Ký Tài Khoản Học Sinh</h2>
+        <!-- <a class="share-link fl-r" href="#"><i class="icon-export"></i>Share</a> -->
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="content-intro content-intro_s2">
+            </div>
+        </div>
+    </div>
+    <div class="row matchHeight-container">
+        <div class="col-xs-12 col-md-6">
+            <div class="info-item P30 bg-7 box">
+                <h1>Đăng Ký Tài Khoản Học Sinh</h1>
+                <ul id="progressbar">
+                    <li class="active">THÔNG TIN TÀI KHOẢN</li>
+                    <li>THÔNG TIN CHUNG</li>
+                    <li>MÔN HỌC</li>
+                </ul>
+                <form name="registerform" id="registerform" class="info-form" ng-submit="regstudent()">
+                    <!--Account detail-->
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="email" class="">Email:</label> <span class="required">*</span>
+                            <input type="email" name="email" id="email" placeholder="" ng-model="student.mail" required>
+                            <!-- asdd : {{!registerform.email.$error.required}} -->
+                            <div role="alert">
+                              <span class="error" ng-show="registerform.email.$error.required">
+                                Vui lòng nhập giá trị</span>
+                              <span class="error" ng-show="registerform.email.$touched && registerform.email.$error.email">
+                                Email không lệ</span>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="">Username:</label> <span class="required">*</span>
+                            <input type="text" id="username" name="username" placeholder="" ng-model="student.username" required>
+                            <div role="alert">
+                              <span class="error" ng-show="!registerform.email.$error.required && registerform.username.$pristine || registerform.username.$touched && registerform.username.$error.required">
+                              Vui lòng nhập giá trị
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="">Password:</label> <span class="required">*</span>
+                            <input type="password" id="password" name="pass" placeholder="" ng-model="student.pass" required>
+                            <div role="alert">
+                              <span class="error" ng-show="!registerform.username.$error.required && registerform.pass.$pristine || registerform.pass.$touched && registerform.pass.$error.required">
+                                Vui lòng nhập giá trị</span>
+                            </div>
+                        </div>
+                        <input type="button" name="next" class="next" value="Tiếp Tục" ng-disabled="registerform.email.$error.required || registerform.username.$error.required || registerform.pass.$error.required || registerform.username.$pristine || registerform.pass.$pristine "/>
+                    </fieldset>
+                    <!-- personal detail -->
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="hoten" class="">Họ tên:</label> <span class="required">*</span>
+                            <input type="text" id="hoten" name="hoten" placeholder="" ng-model="student.name" required>
+                            <div role="alert">
+                              <span class="error" ng-show="registerform.hoten.$error.required">
+                                Vui lòng nhập giá trị</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="brday" class="">Ngày Sinh:</label> <span class="required">*</span>
+                            <input type="date" id="brday" name="bday" placeholder="" ng-model="student.birthdate" required>
+                            <div role="alert">
+                              <span class="error" ng-show="!registerform.hoten.$error.required && registerform.bday.$pristine || registerform.bday.$touched && registerform.bday.$error.required">
+                                Vui lòng nhập giá trị</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="">Giới tính:</label>
+                            <div class="myRadioInline">
+                                <input type="radio" name="gender" ng-model="student.gender" value="Nam" ng-checked='true'>
+                                <label> Nam</label>
+                                <input type="radio" name="gender" ng-model="student.gender" value="Nữ" >
+                                <label>Nữ </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="">Điện thoại:</label> <span class="required">*</span>
+                            <input type="text" id="phone" name="phone" ng-model="student.phone" required>
+                            <div role="alert">
+                              <span class="error" ng-show="!registerform.bday.$error.required && registerform.phone.$pristine || registerform.phone.$touched && registerform.phone.$error.required">
+                                Vui lòng nhập giá trị</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="quote" class="">Châm ngôn sống:</label>
+                            <textarea ng-model="student.quote" cols="30" rows="5">
+
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="descr" class="">Mô tả bản thân:</label>
+                            <textarea ng-model="student.descr" cols="30" rows="5">
+
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="tp" class="">Địa chỉ:</label> <span class="required">*</span>
+                            <input type="text" id="tp" name="tp" ng-model="student.diachi" required>
+                            <div role="alert">
+                              <span class="error" ng-show="!registerform.phone.$error.required && registerform.tp.$pristine || registerform.tp.$touched && registerform.tp.$error.required">
+                                Vui lòng nhập giá trị</span>
+                            </div>
+                        </div>
+                        <input type="button" name="previous" class="previous base-text-color action-button" value="Quay Lại" >
+                        <input type="button" name="next" class="next base-text-color action-button" value="Tiếp Tục" ng-disabled="registerform.hoten.$error.required || registerform.bday.$error.required || registerform.tp.$error.required " />
+                    </fieldset>
+                    <!-- job detail -->
+                    <fieldset>
+                        <div class="input-w">
+                            <label for="your-input">Nơi học:</label> <span class="required">*</span>
+                            <select style="color: #576683" name="noihoc" ng-model="student.noihoc" ng-options="w for w in where" required>
+                            </select>
+                            <div role="alert">
+                              <span class="error" ng-show="registerform.noihoc.$error.required">
+                                Vui lòng nhập giá trị</span>
+                            </div>
+                        </div>
+                        <div class="">
+                            <label class="">Nhu cầu học Môn:</label> <span class="required">*</span>
+                            <div class="row" ng-init="load()">
+                                <div class="col-sm-5 sel-col-left">
+                                    <h4>Chọn môn</h4>
+                                   <div class="uk-margin uk-grid-small uk-child-width-auto" uk-grid ng-repeat="su in subject ">
+                                        <!-- <label><input style="display: inline-block;" class="uk-checkbox" type="checkbox" ng-model="student.mon[$index]"  ng-true-value="'{{su.tenmon}}'" ng-false-value="'null'">{{su.tenmon}}</label> -->
+                                        <label><input style="display: inline-block;" class="uk-checkbox" type="checkbox" ng-model="su.checked"  ng-click="regSubjectStudent(su.tenmon)">{{su.tenmon}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <img id="arrow" src="./images/icon/ArrowRight_50.png" alt="right arrow">
+                                </div>
+                                <div class="col-sm-5 sel-col-right">
+                                    <h4>Môn đã chọn</h4>
+                                    <label style="width: 100%" ng-repeat="suok in monCheckedIndexs"><ng-letter-avatar data="{{suok}}"></ng-letter-avatar></label>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" name="previous" class="previous base-text-color action-button" value="Quay Lại" >
+                        <button class="base-text-color action-button" type="submit" ng-disabled="registerform.noihoc.$error.required">Đăng kí</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="post-item P30 box">
+                <h2 class="title">
+                    <!-- <img src="images/logo.png" alt="demo" /> -->
+
+                    Tìm kiếm gia sư, học sinh dễ dàng hơn
+                </h2>
+
+                <p>
+                    Bạn có thể dễ dàng tìm kiếm gia sư hoặc học sinh thông qua môn học, vị trí của nơi bạn đang ở
+                </p>
+
+                <h5>Bạn là học sinh</h5>
+
+                <p>
+                    Hãy đăng ký tài khoản để tìm gia sư và tương tác ngay với gia sư phù hợp
+                </p>
+                <h5>Bạn là gia sư</h5>
+
+                <p>
+                    Hãy đăng ký tài khoản để tìm học sinh và quản bá hình ảnh của bản thân
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row matchHeight-container">
+    </div>
+<!-- chuyen style vao file myStyle.css -->
+<script src="js/jquery.validate.js"></script>
+<script src="js/myScript.js"></script>

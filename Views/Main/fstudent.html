@@ -1,0 +1,141 @@
+                <div class="page-title P30">
+                    <h2 class="fl-l">Tìm Học Sinh</h2>
+
+                    <!-- <a class="share-link fl-r" href="#"><i class="icon-export"></i>Share</a> -->
+                </div>
+                <div class="row matchHeight-container">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+                        <div class="column-description box P30 bg-4 corner">
+                            <h5>Cảm ơn đã sử dụng Tutor.ct</h5>
+
+                            <div class="text">
+                                <p>
+                                    Cùng xây dựng tương lai với Tutor.ct. <br>
+
+                                </p>
+                            </div>
+                            <a href="#/map" class="stat-link"><span>Tìm học sinh theo vị trí địa lý</span></a>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-6">
+                        <div class="text-block box P30 bg-4 corner">
+                            <p class="title h1">Tìm</p>
+
+                            <div class="text">
+                                <p>
+                                <!-- <input style="color: red" type="text" ng-model="search"> -->
+                                <div ng-controller="StudentController" ng-init="load()" class="col-md-6">
+                                    <a class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" ng-click="findStudentBySubject()"></a>
+                                    <!-- <input class="uk-input" type="text" ng-model="searchSt.subjectText"> -->
+                                    <div class="uk-form-controls">
+                                        <select class="uk-select" id="form-horizontal-select" ng-model="subjectText"
+                                            ng-options="sub as sub.tenmon for sub in subject">
+                                        </select>
+                                    </div>
+                                </div>
+                                </p>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-4">
+                        <div class="block-with-date box bg-4">
+                            <img class="img-responsive" src="images/bg_4.jpg" alt="demo">
+
+                            <div class="description">
+                                <div class="inner">
+                                    <div class="date">
+                                        <span class="first number">20</span>
+
+                                        <span class="second number">13</span>
+
+                                        <span class="month">Commencement</span>
+                                    </div>
+
+                                    <div class="text-center"><a href="#" class="custom-btn">View Gallery</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row"><span style="color: #428BCA; font-size:24px;">{{messageLoadStudent}}</span></div>
+                <div class="row"><span style="color: #428BCA; font-size:24px;">{{messageGetStudent}}</span></div>
+                <div class="row" ng-init="init()">
+                    <div class="col-xs-12 col-md-6" ng-repeat="st in filteredPage | filter:search | orderBy:'+':true">
+
+                        <div class="block-courses_details clearfix bg-0" >
+                            <div class="col-xs-12 col-sm-3 col-md-5 col-lg-4">
+                                <div class="column-description P30 bg-4 corner">
+                                    <h5 style="font-size: 16px">Châm Ngôn Sống</h5>
+
+                                    <div class="text">
+                                        <p>
+                                            {{st.value.quote | limitTo: 220}}{{st.value.quote.length > 200 ? '...' : ''}}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6 col-sm-12 team-img-container">
+                                     <img class="img-responsive bgImgPng respon" ng-src="/upload/{{st.user.avatar}}">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-9 col-md-7 col-lg-8">
+                                <div class="P30">
+                                    <h2 class="title" style="text-transform: uppercase;">{{st.value.fullname}}</h2>
+
+                                    <span ng-repeat="mon in st.value.mon" ng-if="mon!='null'">
+                                         <ng-letter-avatar data="{{mon}}"></ng-letter-avatar>
+                                    </span>
+
+                                    <p class="time"><sup>{{st.value.ngaysinh | date:'yyyy-MM-dd'}}</sup></p>
+
+                                    <p class="address">
+                                        <i class="icon-location base-text-color"></i>
+
+                                        <span>{{st.value.diachi}}</span>
+                                    </p>
+
+                                    <p>
+                                        {{st.value.descr | limitTo: 200}}{{st.value.descr.length > 200 ? '...' : ''}}
+                                    </p>
+
+                                    <!-- <a id="contact" ng-click="checkContact(st.user.username)" class="custom-btn big long colored">contact</a> -->
+                                   <a id="contact" ui-sref="{{ checkRole() ? 'registerStudent({studentUsername:st.user.username, search: true})' : checkUrl() }}" class="custom-btn big long colored">Liên Lạc</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <pagination
+                        boundary-links="true"
+                        max-size="3"
+                        items-per-page="itemsPerPage"
+                        total-items="studentf.length"
+                        ng-model="currentPage"
+                        ng-change="pageChanged(studentf, itemsPerPage, 1)">
+                        </pagination>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="text-block P30">
+                            <p class="title h1">University Conferences</p>
+
+                            <div class="text">
+                                <p>
+                                    Presidential champagne purebred panoramic rich in treasure silk. Expensive gifted with portfolio becoming first-class diplomatatic. Brokerage symbolizing champagne doctoral. Purebred suite accredited educated board affluent sheer crafted topiary stockmarket.
+                                </p>
+
+                                <p>
+                                    Lifestyle brilliant five-star impresario gem grande upper a university european. Using gem housekeeping imported gilded blissfull reserved. Opera marquis inspiring. Salon university acumen. First-class private le wine regal cuisine european sheer politically a affluent.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>

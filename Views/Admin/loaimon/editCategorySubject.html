@@ -1,0 +1,32 @@
+<div class="row">
+    <button onclick="javascript:location.href='#/categorySubject'" style="margin-left: 2%;margin-top: 2vw;text-decoration: none" class="btn btn-fw primary">Trở về danh sách loại môn học</button>
+</div>
+<!-- ############ PAGE START-->
+<div class="padding">
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form ui-jp="parsley" ng-init="editCategorySubject()" ng-submit="changeCategorySubject()">
+        <div class="box">
+          <div class="box-header">
+            <h2>Cập nhật loại môn học</h2>
+          </div>
+          <div class="box-body" >
+            <div class="form-group row">
+              <label class="col-sm-3 form-control-label">Tên loại môn học</label>
+              <div class="col-sm-9">
+                <input type="text" ng-model="updateCategorySubject.loaimon" class="form-control" required placeholder="Nhập loại môn học" >
+              </div>
+            </div>
+          </div>
+          <div class="dker p-a text-right">
+            <button type="submit" class="btn info">Gửi</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<!-- ############ PAGE END-->

@@ -1,0 +1,37 @@
+<div class="row">
+    <button onclick="javascript:location.href='#/addSubject'" style="margin-left: 2%;margin-top: 2vw;text-decoration: none" class="btn btn-fw primary">ADD new Subject</button>
+</div>
+<!-- ############ PAGE START-->
+<div class="padding">
+  <div class="box">
+    <div class="box-header">
+      <h2>List Subject</h2>
+    </div>
+    <div class="table-responsive" ng-init="listSubject()">
+      <table class="table table-striped b-t b-b">
+        <thead>
+          <tr>
+            <th  style="width:20%">No</th>
+            <th  style="width:25%">Subject name</th>
+            <th  style="width:25%">Subject category</th>
+            <th  style="width:15%">Created date</th>
+            <th  style="width:15%">Option</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="x in allSubject">
+            <tr>
+                <td>{{$index}}</td>
+                <td>{{x.tenmon}}</td>
+                <td>{{x.loaimon}}</td>
+                <td>{{x.created_at | date:'medium'}}</td>
+                <td><a ui-sref="editSubject({subjectId:x._id})" ><i class="fa fa-pencil" aria-hidden="true"></a></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- <a ui-sref="removeSubject({subject:x._id})"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td> -->
+                <a href="" ng-click="removeSubject(allSubject[$index]._id,allSubject[$index])"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ############ PAGE END-->

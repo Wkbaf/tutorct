@@ -1,0 +1,427 @@
+<!-- hien thi ket qua tim kiem gia su theo mon -->
+<style type="text/css">
+    table td{
+        font-size: 1.1em;
+    }
+</style>
+<div class="row matchHeight-container">
+    <div class="col-xs-12 col-md-6">
+        <div class="content-slider-container box">
+            <div class="content-slider" data-animation="fade">
+                <div class="slides-container">
+                    <div class="slide">
+                        <img class="img-responsive" src="images/slide_img/slider_small_1.jpg" alt="demo">
+                        <div class="description">
+                            <div class="inner">
+                                <p class="title">Hỗ Trợ Tìm Gia Sư</p>
+                                <p>
+                                    Bạn đang lo lắng vì chưa tìm được gia sư phù hợp. Đừng lo Tutor.ct là một mạng xã hội gia sư - học sinh sẽ hỗ trợ bạn tìm gia sư phù hợp với môn học, năng lực và vị trí địa lý của bạn.
+                                </p>
+<!--                                 <a href="#" class="custom-btn">Learn More</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img class="img-responsive" src="images/slide_img/slider_small_2.jpg" alt="demo">
+                        <div class="description">
+                            <div class="inner">
+                                <p class="title">Hỗ Trợ Tìm Học Sinh</p>
+                                <p>
+                                    Bạn có nhu cầu quảng bá hình ảnh của bản thân cũng như khả năng và trình độ, chất lượng giảng dạy nhưng lại chưa có kênh nào phù hợp. Tutor.ct sẽ sự lựa chọn thích hợp dành cho bạn. Tutor.ct hỗ trợ bạn tìm học sinh theo vị trí địa lý mà bạn mong muốn.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img class="img-responsive" src="images/slide_img/slider_small_3.jpg" alt="demo">
+                        <div class="description">
+                            <div class="inner">
+                                <p class="title">Tương Tác Dễ Dàng</p>
+                                <p>
+                                    Học sinh và gia sư có thể dễ dàng tương tác với nhau thông qua chat hoặc các cuộc thảo luận giữa gia sư và học sinh khác.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="block-courses block-with-date box">
+            <img class="img-responsive hidden-md" src="images/upcoming_1.jpg" alt="demo" />
+            <img class="img-responsive visible-md" src="images/upcoming_1_1.jpg" alt="demo" />
+            <div class="description">
+                <div class="inner">
+                    <h1>Mở Lớp Học</h1>
+                    <p>Mở lớp học theo nhu cầu của học sinh</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- html for search -->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="">
+            <div class="info-item myContainer bg-7 P30">
+                <form class="myForm" ng-submit="findTutorBySubject()">
+                    <select class="input-type" ng-controller="listMon" ng-model="monhoc.tenmon" ng-options="mon.tenmon for mon in monhoc">
+                        <option value="">-- chọn môn học --</option>
+                    </select>
+                    <button class="my-form-button" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- end search -->
+<!-- danh sach gia su tim theo mon -->
+<div class="row matchHeight-container">
+    <!-- info gia su -->
+    <p style="color:#FA0A0A; font-size: 2em; text-align: center">{{message}}</p>
+    <div class="col-xs-12 col-md-6" ng-repeat="gs in giasu" ng-show="show">
+        <div class="post-item P30">
+            <h3 class="title">{{gs.giasu.hoten}}</h3>
+            <div class="text">
+                <p>Đang công tác tại {{gs.giasu.noicongtac}} </p>
+            </div>
+            <p class="address">
+                <i class="icon-location base-text-color"></i>
+                <span color="#000">{{gs.giasu.diachi}}</span>
+            </p>
+            <h6>Dạy Môn:</h6>
+            <ul style="list-style-type: disc; margin-left: 20px">
+                <li ng-repeat="mon in gs.giasu.daymon">{{mon}}</li>
+            </ul>
+            <h6>Nơi có thể dạy:</h6>
+            <ul style="list-style-type: disc; margin-left: 20px">
+                <li ng-repeat="noi in gs.giasu.noiday">{{noi}}</li>
+            </ul>
+            <h6>Kinh Nghiệm:</h6>
+            <p>{{gs.giasu.kinhnghiem}}</p>
+            <a ui-sref="contactgiasu({giasuId:gs.giasu._id})" class="btnBgWhite">Liên Lạc</a>
+        </div>
+    </div>
+    <!-- /info gia su -->
+</div>
+<!-- /danh sach gia su tim theo mon -->
+<!-- an khi co danh sach gia su -->
+<div class="row matchHeight-container" ng-hide="show">
+    <div class="col-xs-12 col-md-6">
+
+        <div class="text-block box bg-0" ng-controller="TutorProfileController">
+            <div class="panel panel-default">
+                <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span><b>Lớp Mới</b></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 " ng-init="listAllClass()">
+                            <ul id="newClass" ng-repeat="l in filteredPage">
+                                <li class="news-item">
+                                    <table cellpadding="4">
+                                        <tr>
+                                            <td>{{l.giasu.thayco}} <b>{{l.giasu.hoten}}</b> mở lớp <b>{{l.monhoc}}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Khai giảng: <b>{{l.start|date: 'dd-MM-yyyy'}}</b>. Hạn chót đăng ký: <b>{{l.deadline | date: 'dd-MM-yyyy'}}</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nơi học: {{l.noihoc}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a ui-sref="classdetail({classId:l._id})"> Xem chi tiết...</a></td>
+                                        </tr>
+                                    </table>
+                                </li>
+
+                            </ul>
+                            <pagination
+                                boundary-links="true"
+                                max-size="3"
+                                items-per-page="itemsPerPage"
+                                total-items="pag.length"
+                                ng-model="currentPage"
+                                ng-change="pageChanged(pag, 1)">
+                            </pagination>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span><b>Nhu cầu môn học của học sinh</b></div>
+            <div class="panel-body" ng-controller="StudentController" ng-init="loadFeedbackSubject()">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul class="demo1" >
+                            <li class="news-item" ng-repeat="fb in loadfeed | orderBy: '-created_at' ">
+                                <table cellpadding="4">
+                                    <tr>
+                                        <td>
+                                            <ng-letter-avatar charCount="2" avatarborder="true"  data="{{fb.subject}}" width="60" class="img-circle"></ng-letter-avatar>&nbsp;&nbsp;&nbsp;
+                                        </td>
+                                        <td>
+                                            <strong>{{fb.studentname}}</strong> đang có nhu cầu học môn {{fb.subject}}  ({{fb.created_at | date:'MM/dd/yyyy'}})<a href="#"></a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                         <pagination
+                        boundary-links="true"
+                        max-size="3"
+                        items-per-page="itemsFeedbackPerPage"
+                        total-items="feedbacks.length"
+                        ng-model="currentPage"
+                        ng-change="pageChanged(feedbacks, itemsFeedbackPerPage, 4)">
+                        </pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!--         <div class="row matchHeight-container">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="text-block box P30 bg-0">
+                            <p class="title h1">N°1 American University</p>
+
+                            <div class="text">
+                                <p>
+                                    Presidential upper polo opulent luxury symphony five-star benefiting sheer. Opera gentlemen politically cuisine gifted club rich yacht becoming caviar.<br />Brilliant in a five-star in grande sterling benefactor. Ambassador rich metropolitan townhome pleasure art cigar. With champagne topiary portfolio sport delegate. Plure with echelon reserved elegant reserved echelon society symphony. Brokerage sport cruise yacht private.
+                                </p>
+                            </div>
+
+                            <a href="#" class="more-link colored"><i class="arrow"></i>Learn more</a>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6"  ng-controller="StudentController" ng-init="loadFeedbackSubject()">
+                        <div class=" box">
+                        <div class="panel-heading"> <span class="glyphicon glyphicon-list-alt"></span><b>Nhu cầu môn học của học sinh</b></div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 ">
+                                    <div class="col-xs-12">
+                                        <ul class="demo1" >
+                                            <li class="news-item" ng-repeat="fb in loadfeed | orderBy: '-created_at'">
+                                                <table cellpadding="4">
+                                                    <tr>
+                                                        <td>
+                                                            <ng-letter-avatar charCount="2" avatarborder="true"  data="{{fb.subject}}" width="60" class="img-circle"></ng-letter-avatar>&nbsp;&nbsp;&nbsp;
+                                                        </td>
+                                                        <td>
+                                                            <strong>{{fb.studentname}}</strong> đang có nhu cầu học môn {{fb.subject}}  ({{fb.created_at | date:'MM/dd/yyyy'}})<a href="#"></a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <pagination
+                        boundary-links="true"
+                        max-size="3"
+                        items-per-page="itemsFeedbackPerPage"
+                        total-items="feedbacks.length"
+                        ng-model="currentPage"
+                        ng-change="pageChanged(feedbacks, itemsFeedbackPerPage, 4)">
+                        </pagination>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="info-container">
+                        <div class="col-xs-12 col-md-4">
+                            <div class=" P30 bg-7" style="color:rgba(255,255,255,0.9)">
+                                <h3 class="icon-graduation-cap"><span>Trở Thành Thành Viên</span></h3>
+                                <br>
+                                <p>
+                                    Hãy đăng ký tài khoản học sinh để tìm kiếm những gia sư phù hợp với bạn
+                                </p>
+                                <a href="#/bstudent" class="more-link"><i class="arrow"></i>Đăng Ký Tài Khoản Học Sinh</a>
+                                <br>
+                                <p>
+                                    Hãy đăng ký tài khoản gia sư để quảng bá hình ảnh và tìm học sinh.
+                                </p>
+
+                                <a href="#/btutor" class="more-link"><i class="arrow"></i>Đăng Ký Tài Khoản Gia Sư</a>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-4">
+                            <div class="info-item P30 bg-6">
+                                <h3 class="icon-search"><span>Tìm Học Sinh</span></h3>
+
+                                <p>
+                                    Bạn là gia sư và bạn đang muốn tìm những học sinh đang có nhu cầu học.
+                                </p>
+                                    <div class="row">
+                                        <p class="col-md-6">+ Tìm Học Sinh Theo Môn Học</p>
+                                        <div ng-controller="StudentController" ng-init="load()" class="col-md-6">
+                                            <a class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" ng-click="findStudentBySubject('home')"></a>
+                                            <!-- <input class="uk-input" type="text" ng-model="searchSt.subjectText"> -->
+                                            <div class="uk-form-controls">
+                                                <select class="uk-select" id="form-horizontal-select" ng-model="subjectText"
+                                                    ng-options="sub as sub.tenmon for sub in subject">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                <p>+ Tìm Học Sinh Trên Bản Đồ:</p>
+                                <br>
+                                <a href="#/map" class="more-link"><i class="arrow"></i>Tìm Ngay</a>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-4">
+                            <div class="info-item P30 bg-5">
+                                <h3 class="icon-lifebuoy"><span>Hỗ Trợ</span></h3>
+
+                                <p>
+                                    Liên lạc với người quản trị
+                                </p>
+
+                                <a href="#/contact" class="more-link"><i class="arrow"></i>Liên lạc</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- css for search -->
+                <style type="text/css">
+                    .dropdown.dropdown-lg .dropdown-menu {
+                        margin-top: -1px;
+                        padding: 6px 20px;
+                    }
+                    .input-group-btn .btn-group {
+                        display: flex !important;
+                    }
+                    .btn-group .btn {
+                        border-radius: 0;
+                        margin-left: -1px;
+                    }
+                    .btn-group .btn:last-child {
+                        border-top-right-radius: 4px;
+                        border-bottom-right-radius: 4px;
+                    }
+                    .btn-group .form-horizontal .btn[type="submit"] {
+                      border-top-left-radius: 4px;
+                      border-bottom-left-radius: 4px;
+                    }
+                    .form-horizontal .form-group {
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .form-group .form-control:last-child {
+                        border-top-left-radius: 4px;
+                        border-bottom-left-radius: 4px;
+                    }
+
+                    @media screen and (min-width: 768px) {
+                        #adv-search {
+                            width: 500px;
+                            margin: 0 auto;
+                        }
+                        .dropdown.dropdown-lg {
+                            position: static !important;
+                        }
+                        .dropdown.dropdown-lg .dropdown-menu {
+                            min-width: 500px;
+                        }
+                    }
+                </style>
+                <!-- <script  src="js/jquery-1.11.0.min.js"></script>
+
+                <script  src="js/jquery.nicescroll.min.js"></script>
+                <script  src="js/jquery.matchHeight-min.js"></script>
+                <script  src="js/jquery.superslides.min.js"></script>
+                <script  src="js/jquery.fs.boxer.min.js"></script>
+                <script  src="js/jquery.easing.js"></script>
+                <script  src="js/jquery.main.js"></script>
+                <link href="/assets/plugin/news/css/site.css" rel="stylesheet" type="text/css" />
+                <script src="/assets/plugin/news/scripts/jquery.bootstrap.newsbox.min.js" type="text/javascript"></script>
+                <script type="text/javascript">
+                    $(function () {
+                        $(".demo1").bootstrapNews({
+                            newsPerPage: 3,
+                            autoplay: true,
+                            pauseOnHover:true,
+                            direction: 'up',
+                            newsTickerInterval: 4000,
+                            onToDo: function () {
+                                //console.log(this);
+                            }
+                        });
+                    });
+                </script>
+ -->
+
+
+<!-- css for search -->
+<style type="text/css">
+.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+}
+
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+
+.btn-group .btn {
+    border-radius: 0;
+    margin-left: -1px;
+}
+
+.btn-group .btn:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.btn-group .form-horizontal .btn[type="submit"] {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+    #adv-search {
+        width: 500px;
+        margin: 0 auto;
+    }
+    .dropdown.dropdown-lg {
+        position: static !important;
+    }
+    .dropdown.dropdown-lg .dropdown-menu {
+        min-width: 500px;
+    }
+}
+</style>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/jquery.matchHeight-min.js"></script>
+<script src="js/jquery.superslides.min.js"></script>
+<script src="js/jquery.fs.boxer.min.js"></script>
+<script src="js/jquery.easing.js"></script>
+<script src="js/jquery.main.js"></script>
+<script src="settings_box/settings_box.js"></script>
+<div ng-include="include_myScript.html"></div>

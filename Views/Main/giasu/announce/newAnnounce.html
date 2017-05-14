@@ -1,0 +1,47 @@
+<!-- <script src="/assets/plugin/ckeditor/ckeditor.js"></script>
+<script src="angular-ckeditor.js"></script> -->
+<div ng-include="'/giasu/header.html'"></div>
+<div class="row ">
+	<div class="col-sm-3 col-md-3">
+        <!--left col-->
+        <div ng-include="'/giasu/leftindex.html'"></div>
+    </div>
+    <div class="col-sm-9 col-md-9 info-item box bg-7" id="mobieDash">
+        <h1 class="formHeading">Tạo Thông Báo Mới</h1>
+    	<form id="form-horizontal" class="info-form P30" name="newAnn" role="form" ng-submit="adAnnounce()">
+            <input type="hidden" ng-controller="getTutorByUsername" ng-model="tutor.giasu">
+    		<div class="form-group" >
+                <label class="" for="topic">Chủ Đề:</label>
+                <div class="">
+                    <input type="text" id="topic" name="topic" ng-model="tutor.topic" required>
+                </div> 
+                <span class="error" ng-show="newAnn.topic.$dirty && newAnn.topic.$invalid">
+                    <span ng-show="newAnn.topic.$error.required">Vui lòng nhập chủ đề</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label class="" for="start">Nội Dung Thông Báo:</label>
+                <div class="">
+                    <textarea name="content" ng-model="tutor.noidung" rows="4"></textarea>
+                </div>
+                <p class="error">Có thể để trống</p>
+            </div>
+            <div class="form-group">
+               	<button type="submit" class="base-text-color">Tạo Mới</button>
+            </div>
+    	</form>
+        <!-- <form>
+        <text-angular name="htmlcontent" ng-model="tutor.noidung">            
+        </text-angular>
+        </form> -->
+        <div ng-show="message">
+            <div ng-class="alert">{{message}}</div>
+        </div>
+        <style type="text/css">
+            .btn-group:{
+                width: 10px;
+            }
+        </style>
+    </div>
+</div>
+<div ng-include="'include_myScript.html'"></div>

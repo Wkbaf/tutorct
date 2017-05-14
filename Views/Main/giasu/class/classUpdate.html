@@ -1,0 +1,100 @@
+<!-- giasu/class/index -->
+<div ng-include="'/giasu/header.html'"></div>
+<div class="row">
+    <div class="col-sm-3 col-sm-3">
+        <!--left col-->
+        <div ng-include="'/giasu/leftindex.html'"></div>
+    </div>
+    <!--/col-3-->
+    <div>
+        <!-- ng-controller="dashbroadTutorInfo"-->
+        <div class="col-sm-9 col-sm-9" id="mobieDash">
+            <a href="#/giasu/classnew" class="btn btn-primary">Mở Lớp Mới</a>
+            <h1>Cập Nhật Thông Tin Chi Tiết Của Lớp</h1>
+            <div class="validateForm P30 " ng-controller="classInfo">                
+                <form class="form-horizontal info-form" id="editClass mobieDash" name="editClass" ng-submit=clasUpdate()>
+                    <div class="form-group" >
+                        <label class="control-label col-sm-2" for="mon">Môn Học:</label>
+                        <select id="mon" class="mySelect selHorizontal"  ng-controller="getTutorByUsername" ng-model="lop.monhoc" ng-options="daymon for daymon in tutor.daymon">
+                            <option value="">-- Chọn môn học --</option>
+                        </select>                
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="start">Khai Giảng:</label>
+                        <div class="col-sm-4">
+                            <input type="date" id="start" ng-model="lop.start" required>
+                        </div>
+                        <label class="control-label col-sm-2" for="end">Hạn Chót Đăng Ký:</label>
+                        <div class="col-sm-4">
+                            <input type="date" id="end" ng-model="lop.deadline" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="hocphi">Học Phí:</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="hocphi" ng-model="lop.hocphi" required>
+                        </div>
+                        <div class="col-sm-1"><p class="unit_form">VND/Tháng</p></div>
+                        <label class="control-label col-sm-2" for="no" >Số Lượng:</label>
+                        <div class="col-sm-2">
+                            <input type="number" id="no" ng-model="lop.hsno" required>
+                        </div>
+                        <div class="col-sm-2"><p class="unit_form">Học Sinh</p></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="noi">Nơi Học:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="noi" ng-model="lop.noihoc" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="noidung">Nội Dung:</label>
+                        <div class="col-sm-10">
+                            <!-- <textarea id="noidung" ng-model="lop.noidung" required></textarea> -->
+                            <text-angular ng-model="lop.noidung" color="#000"></text-angular>
+                        </div>
+                    </div>
+                    <legend style="color:#fff">Thời Khóa Biểu</legend>
+                    <fieldset>   
+                        <div class="row tkb">
+                            <label class="col-sm-2">Thứ</label>
+                            <label class="col-sm-4">Giờ Bắt Đầu</label>
+                            <label class="col-sm-4">Giờ Kết Thúc</label>
+                        </div>                             
+                        <div class="row tkb" ng-repeat="tk in lop.tkb">
+                           <select class="col-sm-2 mySelect" ng-model="tkb.thu" ng-options="t for t in thu">
+                                <option value="">-- Thứ --</option>
+                            </select>
+                            <!-- <p>{{tk.giobd}}</p> -->
+                            <select class="col-sm-1 mySelect" ng-model="tkb.giobd" ng-options="n for n in [] | range:24">
+                                <option value="">-- Giờ--</option>
+                            </select>
+                            <select class="col-sm-1 mySelect" ng-model="tkb.phutbd" ng-options="n for n in [] | range:60">
+                                <option value="">-- Phút--</option>
+                            </select>
+                            <select class="col-sm-1 mySelect" ng-model="tkb.giokt" ng-options="n for n in [] | range:24">
+                                <option value="">-- Giờ--</option>
+                            </select>
+                            <select class="col-sm-1 mySelect" ng-model="tkb.phutkt" ng-options="n for n in [] | range:60">
+                                <option value="">-- Phút--</option>
+                            </select>
+                            <button class="col-sm-1 removeBtn" type="button" ng-if="$last && $index > 0" ng-click="removeTkb()">-</button>
+                        </div> 
+                        <button type="button" class="col-sm-2 pull-right removeBtn addBtn" ng-click="addTkb()">+</button>
+                    </fieldset>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-3 col-sm-offset-1">
+                            <button type="submit" class="base-text-color">Cập Nhật</button>
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                </form>
+                <div ng-show="message">
+                    <div ng-class="alert">{{message}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include="'include_myScript.html'"></div>

@@ -1,0 +1,184 @@
+			<section class="main-content">
+				<div class="page-title P30">
+					<h2 class="fl-l">Liên Lạc Với Quản Trị</h2>
+				</div>
+
+<!-- 				<div class="row">
+					<div class="g_map" data-longitude="40.7587402" data-latitude="-73.9786736" data-marker="images/marker.png"></div>
+
+					<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+				</div>
+ -->
+				<div class="row">
+					<div class="col-xs-12 col-md-6">
+						<div class="info-item box P30 bg-7 corner">
+							<h1>Form Liên Lạc</h1>
+
+							<form id="contact_form" name="contact_form" class="info-form" ng-submit="sendContact()">
+								<p>
+									Bạn có thắc mắc hay ý kiến đóng góp cho chúng tôi. Hãy cho chúng tôi biết
+								</p>
+
+								<input type="text" placeholder="Nhập chủ đề" ng-model="contact.subject" />
+
+								<input type="text" placeholder="Nhập email của bạn" name="email" ng-model="contact.mail" required />
+                                  <span class="error" ng-show="contact_form.email.$error.required">
+                                    Vui lòng điền thông tin!</span>
+                                  <span class="error" ng-show="contact_form.email.$valid">
+                                    Email không hợp lệ!</span>
+								<textarea placeholder="Nhập nội dung" ng-model="contact.message" required></textarea>
+
+								<button  class="small base-text-color" type="submit" id="sbmt">Gửi</button>
+
+								<div class="form-message bg-2" style="display: none;">
+									<p class="success"></p>
+									<p class="error"></p>
+								</div>
+							</form>
+						</div>
+
+						<!-- <div class="post-item P30 bg-0">
+							<h2 class="title">Thông Tin Liên Lạc</h2>
+
+							<p>
+								Địa chỉ: Ba Tháng Hai, Xuân Khánh, Ninh Kiều, Cần Thơ, Việt Nam
+							</p>
+
+							<ul>
+								<li><a href="#">Introducing University</a></li>
+								<li><a href="#">Facts and figures</a></li>
+								<li><a href="#">University People</a></li>
+								<li><a href="#">University Year</a></li>
+								<li><a href="#">Foundations ifor the Future</a></li>
+								<li><a href="#">Jobs and Vacancies</a></li>
+								<li><a href="#">An University Education</a></li>
+								<li><a href="#">Human Resources</a></li>
+								<li><a href="#">Libraries</a></li>
+								<li><a href="#">Museums</a></li>
+								<li><a href="#">Retirement Association</a></li>
+							</ul>
+						</div> -->
+					</div>
+
+					<div class="col-xs-12 col-md-6">
+						<div class="post-item P30">
+							<h2 class="title">Hãy Kết Nối Với Chúng Tôi</h2>
+
+							<p>
+								Bạn đang lo lắng vì chưa tìm được gia sư phù hợp. Đừng lo Tutor.ct là một mạng xã hội gia sư - học sinh sẽ hỗ trợ bạn tìm gia sư phù hợp với môn học, năng lực và vị trí địa lý của bạn.
+							</p>
+
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-4">
+									<h5>Thông Tin Liên Lạc</h5>
+
+									<div style="font-size: 13px;">
+										<p>
+											Ba Tháng Hai, Xuân Khánh, Ninh Kiều, Cần Thơ, Việt Nam
+										</p>
+
+										<p>
+											P::+84 710 3838 474
+											<br />
+											E: <a href="mailto:info@yoursite.com"> info@tutor.com</a>
+										</p>
+									</div>
+								</div>
+
+								<div class="col-xs-12 col-sm-6 col-md-4">
+									<h5>Nhiệm Vụ</h5>
+
+									<p>
+										Hỗ Trợ Tìm Học Sinh <br>Hỗ Trợ Tìm Gia Sư
+									</p>
+								</div>
+
+								<div class="col-xs-12 col-md-4">
+									<h5>Liên Lạc Email</h5>
+
+									<p>
+										Mọi thông tin vui lòng gửi về <a href="mailto:info@tutor.com">info@tutor.com</a>
+									</p>
+								</div>
+							</div>
+
+							<p>
+								Bạn có nhu cầu quảng bá hình ảnh của bản thân cũng như khả năng và trình độ, chất lượng giảng dạy nhưng lại chưa có kênh nào phù hợp. Tutor.ct sẽ sự lựa chọn thích hợp dành cho bạn. Tutor.ct hỗ trợ bạn tìm học sinh theo vị trí địa lý mà bạn mong muốn.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<section id="mobile-menu-container">
+			<a href="index_2.html" id="header-logo_2" class="site-logo">University</a>
+
+			<a id="menu-close" href="javascript:void(0);">Close Menu</a>
+
+			<nav id="mobile-navigation" class="mobile-menu">
+				<ul>
+					<li>
+						<a href="#">Faculties</a>
+
+						<div class="dropdown">
+							<ul>
+								<li><a href="faculties_1.html">Faculties 1</a></li>
+								<li><a href="faculties_2.html">Faculties 2</a></li>
+							</ul>
+						</div>
+					</li>
+
+					<li>
+						<a href="academics.html">Academics</a>
+					</li>
+
+					<li>
+						<a href="#">Courses</a>
+
+						<div class="dropdown">
+							<ul>
+								<li><a href="courses.html">Courses</a></li>
+								<li><a href="courses_details.html">Courses Details</a></li>
+							</ul>
+						</div>
+					</li>
+
+					<li>
+						<a href="#">Pages</a>
+
+						<div class="dropdown">
+							<ul>
+								<li><a href="about.html">About Us</a></li>
+								<li><a href="index_2.html">Home 2</a></li>
+								<li><a href="login_2.html">Login 2</a></li>
+								<li><a href="typography.html">Typography</a></li>
+							</ul>
+						</div>
+					</li>
+
+					<li class="current">
+						<a href="contact.html">Contact</a>
+					</li>
+				</ul>
+			</nav>
+
+			<nav id="mobile-submenu">
+				<ul>
+					<li><a href="campus_locations.html">Campus and locations</a></li>
+					<li><a href="directory.html">Directory</a></li>
+					<li><a href="study_advice.html">Study advice</a></li>
+					<li><a href="login.html"><i class="icon-user"></i>Login</a></li>
+				</ul>
+			</nav>
+		</section>
+
+		<!-- <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script> -->
+		<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+		<script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
+		<script type="text/javascript" src="js/jquery.superslides.min.js"></script>
+		<script type="text/javascript" src="js/jquery.fs.boxer.min.js"></script>
+		<script type="text/javascript" src="js/jquery.easing.js"></script>
+		<script type="text/javascript" src="js/jquery.main.js"></script>
+	</body>
+</html>

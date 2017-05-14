@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html ng-app="admin">
+<head>
+  <meta charset="utf-8" />
+  <title>Tutor.ct</title>
+  <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="/assets/images/logo.png">
+
+  <!-- tutor style css -->
+  <link rel="stylesheet" href="admin.css" type="text/css" />
+
+  <!-- style -->
+  <link rel="stylesheet" href="/assets/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/material-design-icons/material-design-icons.css" type="text/css" />
+
+  <link rel="stylesheet" href="/assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <!-- build:css /assets/styles/app.min.css -->
+  <link rel="stylesheet" href="/assets/styles/app.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="/assets/styles/font.css" type="text/css" />
+
+        <!-- jQuery -->
+  <script src="/libs/jquery/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="/libs/jquery/tether/dist/js/tether.min.js"></script>
+  <script src="/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<!-- core -->
+  <script src="/libs/jquery/underscore/underscore-min.js"></script>
+  <script src="/libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="/libs/jquery/PACE/pace.min.js"></script>
+
+  <script src="/html/scripts/config.lazyload.js"></script>
+
+  <script src="/html/scripts/palette.js"></script>
+  <script src="/html/scripts/ui-load.js"></script>
+  <script src="/html/scripts/ui-jp.js"></script>
+  <script src="/html/scripts/ui-include.js"></script>
+  <script src="/html/scripts/ui-device.js"></script>
+  <script src="/html/scripts/ui-form.js"></script>
+  <script src="/html/scripts/ui-nav.js"></script>
+  <script src="/html/scripts/ui-screenfull.js"></script>
+  <script src="/html/scripts/ui-scroll-to.js"></script>
+  <script src="/html/scripts/ui-toggle-class.js"></script>
+
+  <script src="/html/scripts/app.js"></script>
+
+
+
+  <!-- ajax -->
+  <script src="/libs/jquery/jquery-pjax/jquery.pjax.js"></script>
+  <script src="/html/scripts/ajax.js"></script>
+
+        <script src="angular.js"></script>
+        <script src="angular-route.js"></script>
+        <script src="angular-ui-router.js"></script>
+        <script src="angular-resource.js"></script>
+        <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.min.js"></script> -->
+<!--   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script> -->
+    <script src="/Modules/adminApp.js"></script>
+    <script src="/Controllers/AdminController.js"></script>
+
+    <!-- ng-avatar -->
+    <script src="/assets/plugin/ng-avatar/ngletteravatar.min.js"></script>
+    <script src="/assets/plugin/ng-avatar/ngletteravatar.js"></script>
+
+    <style type="text/css">
+        .myaccount {
+
+        }
+        .myaccount img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+        #menulogin{
+            opacity: 1;
+            -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+            transform: scale(1);
+            pointer-events: auto;
+            left: auto;
+            right: 0;
+            webkit-transform-origin: top right;
+            moz-transform-origin: top right;
+            ms-transform-origin: top right;
+            transform-origin: top right;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 100%;
+            left: -126px;
+            z-index: 1000;
+            display: none;
+            width: 160px;
+            padding: 5px 0;
+            margin: 2px 0 0;
+            font-size: 1rem;
+            color: #373a3c;
+            text-align: left;
+            list-style: none;
+            background-color: #fff;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            border: 1px solid rgba(0,0,0,.15);
+            border-radius: .25rem;
+
+        }
+    </style>
+
+</head>
+<body>
+  <div class="app"  ng-hide="auth">
+
+<!-- ############ LAYOUT START-->
+
+  <!-- aside -->
+  <div id="aside" class="app-aside modal fade nav-expand">
+    <div class="left navside black dk" layout="column">
+      <div class="navbar no-radius">
+        <!-- brand -->
+        <a class="navbar-brand">
+            <!-- <div ui-include="'/assets/images/logo.svg'"></div>
+            <img src="/assets/images/logo.png" alt="." class="hide"> -->
+            <span class="hidden-folded inline">Tutor.ct</span>
+        </a>
+        <!-- / brand -->
+      </div>
+      <div flex class="hide-scroll">
+        <nav class="scroll nav-stacked nav-active-primary">
+
+            <ul class="nav" ui-nav>
+              <li class="nav-header hidden-folded">
+                <small class="text-muted">Tác vụ</small>
+              </li>
+
+              <li>
+                <a href="#/dashboard" >
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe3fc;
+                      <span ui-include="'/assets/images/i_0.svg'"></span>
+                    </i>
+                  </span>
+                  <span class="nav-text">Bảng điều khiển</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#/subject" >
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe8d2;
+                      <span ui-include="'/assets/images/i_3.svg'"></span>
+                    </i>
+                  </span>
+                  <span class="nav-text">Quản lí môn học</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#/categorySubject" >
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe8d2;
+                      <span ui-include="'/assets/images/i_3.svg'"></span>
+                    </i>
+                  </span>
+                  <span class="nav-text">Quản lí loại môn học</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#/contact" >
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe8d2;
+                      <span ui-include="'/assets/images/i_3.svg'"></span>
+                    </i>
+                  </span>
+                  <span class="nav-text">Quản lí liên lạc</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#/feedback" >
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe8d2;
+                      <span ui-include="'/assets/images/i_3.svg'"></span>
+                    </i>
+                  </span>
+                  <span class="nav-text">Quản lí nhu cầu học của học sinh</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#/yeucauhoc" >
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe8d2;
+                      <span ui-include="'/assets/images/i_3.svg'"></span>
+                    </i>
+                  </span>
+                  <span class="nav-text">Quản lí yêu cầu học của gia sư</span>
+                </a>
+              </li>
+
+              <li class="nav-header hidden-folded">
+                <small class="text-muted">Thông tin chung</small>
+              </li>
+
+              <li>
+                <a href="#/account" >
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe39e;
+                      <span ui-include="'/assets/images/i_6.svg'"></span>
+                    </i>
+                  </span>
+                  <span class="nav-text">Thêm tài khoản</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#/manageAccount" >
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe39e;
+                      <span ui-include="'/assets/images/i_6.svg'"></span>
+                    </i>
+                  </span>
+                  <span class="nav-text">Quản lí tài khoản</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#/profile" >
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe429;
+                      <span ui-include="'/assets/images/i_4.svg'"></span>
+                    </i>
+                  </span>
+                  <span class="nav-text">Cập nhật thông tin chung</span>
+                </a>
+              </li>
+
+            </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- / aside -->
+
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z1" role="main">
+    <div class="app-header white box-shadow">
+        <div class="navbar">
+            <!-- Open side - Naviation on mobile -->
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up">
+              <i class="material-icons">&#xe5d2;</i>
+            </a>
+            <!-- / -->
+
+            <!-- Page title - Bind to $state's title -->
+            <div class="navbar-item pull-left h5" ng-bind="$state.current.data.title" id="pageTitle"></div>
+
+            <!-- navbar right -->
+            <ul class="nav navbar-nav pull-right">
+              <li class="nav-item dropdown">
+                <a class="nav-link clear" href data-toggle="dropdown">
+                  <span class="myaccount">
+                    <!-- <ng-letter-avatar data="{{current_mail}}"></ng-letter-avatar> -->
+                    Đăng xuất
+                    <i class="on b-white bottom"></i>
+                  </span>
+                </a>
+                <div id="menulogin" class="pull-right" style="display:none" >
+                  <a class="dropdown-item" href="#/profile">
+                    <span>Profile</span>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" ng-click="signout()">Sign out</a>
+                </div>
+              </li>
+              <li class="nav-item hidden-md-up">
+                <a class="nav-link" data-toggle="collapse" data-target="#collapse">
+                  <i class="material-icons">&#xe5d4;</i>
+                </a>
+              </li>
+            </ul>
+            <!-- / navbar right -->
+
+        </div>
+    </div>
+    <div class="app-footer">
+      <div class="p-a text-xs">
+        <div class="pull-right text-muted">
+          <strong>Tutor.ct</strong> <span class="hidden-xs-down">- Seek your Future</span>
+          <a ui-scroll-to="content"><i class="fa fa-long-arrow-up p-x-sm"></i></a>
+        </div>
+        <div class="nav">
+          <a class="nav-link" href="/">About</a>
+          <span class="text-muted">-</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- change view here -->
+    <div ui-view class="app-body" id="view">
+
+    </div>
+  </div>
+  <!-- / content -->
+
+  <!-- theme switcher -->
+  <div id="switcher">
+    <div class="switcher box-color dark-white text-color" id="sw-theme">
+      <a href ui-toggle-class="active" target="#sw-theme" class="box-color dark-white text-color sw-btn">
+        <i class="fa fa-gear"></i>
+      </a>
+      <div class="box-header">
+        <h2>Theme Switcher</h2>
+      </div>
+      <div class="box-divider"></div>
+      <div class="box-body">
+        <p class="hidden-md-down">
+          <label class="md-check m-y-xs"  data-target="folded">
+            <input type="checkbox">
+            <i class="green"></i>
+            <span class="hidden-folded">Folded Aside</span>
+          </label>
+          <label class="md-check m-y-xs" data-target="boxed">
+            <input type="checkbox">
+            <i class="green"></i>
+            <span class="hidden-folded">Boxed Layout</span>
+          </label>
+          <label class="m-y-xs pointer" ui-fullscreen>
+            <span class="fa fa-expand fa-fw m-r-xs"></span>
+            <span>Fullscreen Mode</span>
+          </label>
+        </p>
+
+        <p>Themes:</p>
+        <div data-target="bg" class="text-u-c text-center _600 clearfix">
+          <label class="p-a col-xs-6 light pointer m-a-0">
+            <input type="radio" name="theme" value="" hidden>
+            Light
+          </label>
+          <label class="p-a col-xs-6 grey pointer m-a-0">
+            <input type="radio" name="theme" value="grey" hidden>
+            Grey
+          </label>
+          <label class="p-a col-xs-6 dark pointer m-a-0">
+            <input type="radio" name="theme" value="dark" hidden>
+            Dark
+          </label>
+          <label class="p-a col-xs-6 black pointer m-a-0">
+            <input type="radio" name="theme" value="black" hidden>
+            Black
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- / -->
+
+<!-- ############ LAYOUT END-->
+
+  </div>
+
+  <!-- ui view signin -->
+    <div class="app2" id="app2"  ng-show="auth">
+        <div ng-controller="AdminController" ui-view="signin"></div>
+    </div>
+
+    <!-- Script for hide-show menu login -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.myaccount').on('click',function(){
+                $( '#menulogin' ).toggle();
+            })
+            $(document).on('click',function(){
+                $( '#menulogin' ).hide();
+            })
+        });
+    </script>
+
+</body>
+</html>

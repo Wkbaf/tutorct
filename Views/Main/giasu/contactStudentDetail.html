@@ -1,0 +1,80 @@
+<div ng-controller="checkLogin"></div>
+<div class="row" ng-controller="dashbroadTutorInfo">
+    <div class="col-sm-3 col-md-3">
+        <div ng-include="'/giasu/leftIndex.html'"></div>
+    </div>
+    <!--/col-3-->
+    <div class="col-sm-9 col-md-9" id="mobieDash"  >
+        <a href="#/giasu"><button type="button" class="btn btn-default" style="margin-bottom: 20px;">Quay Lại</button></a>
+        <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a data-target='#home' data-toggle="tab">Chi Tiết Liên Lạc</a></li>
+            <li><a data-target='#studentInfo' data-toggle="tab">Thông Tin Học Sinh</a></li>
+        </ul>
+        <div class="tab-content" ng-controller="ctStudentDetailURL">
+            <div class="tab-pane active" id="home">
+                <table class="table table-striped contentBox">
+                    <tbody>
+                        <tr>
+                            <th>Tên học sinh</th>
+                            <td>{{hocsinh.fullname}}</td>
+                        </tr>
+                        <tr>
+                            <th>Môn học</th>
+                            <td>{{contact.subject}}</td>
+                        </tr>
+                        <tr>
+                            <th>Nội dung liên lạc</th>
+                            <td>{{contact.message}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div ng-class="alert">
+                    <p>{{error}}</p>
+                </div>    
+            </div>
+            <!--/tab-pane-->
+            <div class="tab-pane " id="studentInfo">
+                <table class="table table-striped contentBox">
+                    <tbody>
+                        <tr>
+                            <th>Họ tên</th>
+                            <td>{{hocsinh.fullname}}</td>
+                        </tr>
+                        <tr>
+                            <th>Ngày sinh</th>
+                            <td>{{hocsinh.ngaysinh}}</td>
+                        </tr>
+                        <tr>
+                            <th>Giới tính</th>
+                            <td>{{hocsinh.gender}}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{hocsinh.mail}}</td>
+                        </tr>
+                        <tr>
+                            <th>Điện thoại</th>
+                            <td>{{hocsinh.phone}}</td>
+                        </tr>
+                        <tr>
+                            <th>Địa chỉ</th>
+                            <td>{{hocsinh.diachi}}</td>
+                        </tr>
+                        <tr>
+                            <th>Nơi có thể học</th>
+                            <td>{{hocsinh.noihoc}}</td>
+                        </tr>
+                        <tr>
+                            <th>Descr</th>
+                            <td>{{hocsinh.descr}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--/tab-pane-->
+        </div>
+        <!--/tab-pane-->
+    </div>
+    <!--/tab-content-->
+</div>
+<!--/col-9-->

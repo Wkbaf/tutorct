@@ -1,0 +1,253 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    /*max-width: 280px;*/
+}
+
+.inputLog {
+    max-width: 100%;
+}
+
+
+/*limit letter*/
+.limit {
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 98%;
+  color: #666;
+}
+
+.scroll {
+    overflow-x: scroll;
+        overflow-y: hidden;
+        height: 80px;
+    white-space:nowrap;
+}
+
+#mobieDash {
+    float: right;
+    width: 73%;
+}
+
+@media screen and (max-width: 480px) {
+    #mobieDash {
+        float: none;
+        width: 100%;
+    }
+}
+
+.list-body {
+    cursor: pointer;
+}
+
+.margindot {
+    /*padding-left: 40% !important;*/
+    position: absolute;
+    left: 80%;
+}
+
+.margform {
+    padding-top: 5% !important;
+}
+
+.margform h6 {
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.marginput {
+    padding: 10px 0px 10px 0px;
+}
+
+.headerminH{
+    height: 7.5vw !important;
+}
+
+.link-home {
+    display: inline-block;
+    vertical-align: top;
+    text-transform: uppercase;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.arrow-home {
+    float: right;
+    width: 3px;
+    height: 60%;
+    background: #fff;
+}
+
+.respon {
+    width: 195px !important;
+    height: 195px !important;
+    background-size: cover;
+}
+
+/*for chat box*/
+
+.chat
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chat li
+{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #B3A9A9;
+}
+
+.chat li.left .chat-body
+{
+    /*margin-left: 60px;*/
+}
+
+.chat li.right .chat-body
+{
+    margin-right: 60px;
+}
+
+
+.chat li .chat-body p
+{
+    margin: 0;
+    /*color: #777777;*/
+}
+
+.panel .slidedown .glyphicon, .chat .glyphicon
+{
+    margin-right: 5px;
+}
+
+.chatbody{
+    overflow-y: auto;
+    height: 34vw;
+}
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+/*.chatbox {
+    z-index: 2000;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 25%;
+}*/
+
+.chatbox {
+    padding-top: 23px;
+}
+
+@media screen and (max-width: 940px) {
+    .chatbox {
+    padding-top: 23px;
+}
+    .panel-body
+    {
+        overflow-y: scroll;
+        height: 84vw;
+    }
+}
+
+
+.chatbox .contain {
+    margin-bottom: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+
+/*rating*/
+ .rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+.rating li {
+  padding: 1px;
+  color: #ddd;
+  font-size: 20px;
+  text-shadow: .05em .05em #aaa;
+  list-style-type: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.rating li.filled {
+  color: #fd0;
+}
+.rating.readonly li.filled {
+  color: #666;
+}
+
+.average-rating-container {
+  position: relative;
+  height: 31px;
+  width: 103px;
+  overflow: hidden;
+}
+.average-rating-container .background,
+.average-rating-container .foreground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/*comment của thông báo học sinh*/
+
+
+@media screen and (max-width: 480px) {
+    .commentbox
+    {
+        padding-top: 74% !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .commentbox
+    {
+        padding-top: 7% !important;
+    }
+}

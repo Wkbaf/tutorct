@@ -1,0 +1,49 @@
+<style type="text/css">
+	.detailTitle{
+      	width: 100%;
+      	min-height: 100px;
+      	margin: 0px;
+      	text-align: left;
+		padding: 20px;
+		color: #fff;
+    }
+    	.detailTitle h3, .detailTitle h4{
+    		color: #fff;
+    		line-height: 40px;
+    		padding-left: 50px;
+    	}
+    .detail{
+    	margin-left: 30px;
+    }
+</style>
+<div ng-controller="checkLogin">
+<div class="" ng-controller='infoTutor'>
+	<div class="detailTitle  bg-7">
+		<h3>{{giasu.hoten}}</h3>
+		<h4>{{giasu.noicongtac}}</h4>
+	</div>
+	<div class="row P30">
+		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 avatar">
+			<img class="img-responsive" src="upload/noimage.png" alt="demo" />
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 detail">
+			<p><b>Email: </b>{{giasu.email}}</p>
+            <p class="address">
+                <i class="icon-location base-text-color"></i>
+            	<span color="#000">{{giasu.diachi[0].phuong}}, {{giasu.diachi[0].quan}},
+            {{giasu.diachi[0].thanhpho}}</span>
+            </p>
+            <h6>Dạy Môn:</h6>
+            <ul style="list-style-type: disc; margin-left: 20px">
+                <li ng-repeat="mon in giasu.daymon">{{mon}}</li>
+            </ul> 
+            <h6>Nơi có thể dạy:</h6>                                      
+            <p>{{giasu.noiday[0]}}</p>
+            <h6>Kinh Nghiệm:</h6>
+            <p>{{giasu.kinhnghiem}}</p>
+            <a ui-sref="contactgiasu({giasuId:giasu._id})" class="custom-btn big long colored">Liên Lạc</a>
+		</div>
+	</div>
+
+</div>
+</div>

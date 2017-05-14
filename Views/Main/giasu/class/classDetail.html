@@ -1,0 +1,144 @@
+<!-- giasu/class/index -->
+<div ng-include="'include_myScript.html'"></div>
+<div ng-include="'/giasu/header.html'"></div>
+<div class="row">
+    <div class="col-sm-3 col-md-3">
+        <!--left col-->
+        <div ng-include="'/giasu/leftindex.html'"></div>
+    </div>
+    <!--/col-3-->
+    <div>
+        <!-- ng-controller="dashbroadTutorInfo"-->
+        <div class="col-sm-9 col-md-9" id="mobieDash">
+            <a href="#/giasu/classnew" class="btn btn-primary">Mở Lớp Mới</a>
+            <h1>Thông Tin Chi Tiết Của Lớp</h1>
+            <p>Báo cáo vi phạm: xóa học sinh khỏi danh sách lớp, danh sách học sinh. Nếu học sinh bị báo cáo vi phạm quá 3 lần sẽ bị khóa tài khoản</p>
+            <div role="tabpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active" role="presentation" class="active">
+                        <a data-target="#hocsinh" aria-controls="home" role="tab" data-toggle="tab">Danh Sách Học Sinh</a>
+                    </li>
+                    <li role="presentation">
+                        <a data-target="#info" aria-controls="tab" role="tab" data-toggle="tab">Thông Tin Lớp</a>
+                    </li>
+                </ul>
+                <!-- Tab panes --><!--ds hoc sinh-->
+                <div class="tab-content" ng-controller="classInfo">
+                    <div role="tabpanel" class="tab-pane active" id="hocsinh">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Tên Học Sinh</th>
+                                        <th>Nam/Nữ</th>
+                                        <th>Email</th>
+                                        <th>Điện Thoại</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="items" ng-repeat="hs in hocsinh">
+                                    <tr>
+                                        <td>{{$index+1}}</td>
+                                        <td>{{hs.fullname}}</td>
+                                        <td>{{hs.gender}}</td>
+                                        <td>{{hs.mail}}</td>
+                                        <td>{{hs.phone}}</td>
+                                        <td>
+                                            <!-- <a confirmed-click="unregisterClass(lop._id, hs._id)" ng-confirm-click="Chắc chắn xóa học sinh này?" data-toggle="tooltip" title="Xóa"><i class="fa fa-trash" aria-hidden="true"></i></a> -->
+                                            <button confirmed-click="unregisterClass(lop._id, hs._id)" ng-confirm-click="Chắc chắn xóa học sinh này?" type="button" class="btn btn-danger">Xóa</button>
+                                            <button confirmed-click="baoViPham(lop._id, lop.giasu, hs._id)" ng-confirm-click="Bạn chắc học sinh này vi phạm?" type="button" class="btn btn-warning" data-toggle="tooltip" title="Học sinh này sẽ bị khóa tài khoản vĩnh viễn">Báo cáo vi phạm</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="notFound">{{message}}</p>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-4 text-center">
+                                    <ul class="pagination" id="myPager"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--thong tin lop hoc-->
+                    <div role="tabpanel" class="tab-pane" id="info">
+                        <div class="row well">
+                            <div class="col-md-3"><b>Môn Học: </b></div>
+                            <div class="col-md-9">{{lop.monhoc}}</div>                            
+                        </div>
+                        <div class="row well">
+                            <div class="col-md-3"><b>Khai Giảng: </b></div>
+                            <div class="col-md-3">{{lop.start | date:"dd-MM-yyyy"}}</div> 
+                            <div class="col-md-3"><b>Hạn Chót Đăng Ký: </b></div>
+                            <div class="col-md-3">{{lop.deadline | date:"dd-MM-yyyy"}}</div>                            
+                        </div>
+                        <div class="row well">
+                            <div class="col-md-3"><b>Học Phí: </b></div>
+                            <div class="col-md-3">{{lop.hocphi}}</div>  
+                            <div class="col-md-1"><b>Sỉ số: </b></div>
+                            <div class="col-md-5">{{lop.hocsinh.length}} / {{lop.hsno}}</div>           
+                        </div>
+                        <div class="row well">
+                            <div class="col-md-3"><b>Nơi Học: </b></div>
+                            <div class="col-md-9">{{lop.noihoc}}</div>                            
+                        </div>
+                        <div class="row well">
+                            <div class="col-md-3"><b>Nội Dung: </b></div>
+                            <div class="col-md-9">{{lop.noidung | htmlToPlaintext}}</div>                       
+                        </div>
+                        <div class="row well">
+                            <b>Thời Khóa Biểu: </b>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Thứ</th>
+                                            <th>Giờ Bắt Đầu</th>
+                                            <th>Giờ Kết Thúc</th>                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="tkb in lop.tkb">
+                                            <td>{{tkb.thu}}</td>
+                                            <td>{{tkb.giobd}}:{{tkb.phutbd}}</td>
+                                            <td>{{tkb.giokt}}:{{tkb.phutkt}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                      
+                        </div>
+                        <div class="row well"  ng-repeat="x in lop.danhgia">
+                            <div class="row">
+                                <h4 class="col-md-3">Đánh giá:</h4>
+                                <span ng-init="$parent.avergate = ($parent.khanang + $parent.tinhthan +$parent.phuongphap + $parent.tucach)/(4*lop.danhgia.length)"></span>
+                                <div class="col-md-6"><span average-star-rating ng-model="avergate" max="5"></span></div> 
+                            </div>                            
+                            <div class="row">
+                                <span ng-init="$parent.khanang = ($parent.khanang + x.khanang); "></span>
+                                <div class="col-md-6"><b>Khả năng truyền đạt: </b></div>
+                                <div class="col-md-6"><span average-star-rating ng-model="khanang" max="5"></span></div> 
+                            </div>
+                            <div class="row">
+                                <span ng-init="$parent.phuongphap = ($parent.phuongphap + x.phuongphap); "></span>
+                                <div class="col-md-6"><b>Phương pháp, tổ chức dạy học: </b></div>
+                                <div class="col-md-6"><span average-star-rating ng-model="phuongphap" max="5"></span></div> 
+                            </div>
+                           <div class="row">
+                                <span ng-init="$parent.tinhthan = ($parent.tinhthan + x.tinhthan); "></span>
+                                <div class="col-md-6"><b>Tinh thần trách nhiệm: </b></div>
+                                <div class="col-md-6"><span average-star-rating ng-model="tinhthan" max="5"></span></div> 
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6"><b>Tư cách đạo đức: </b></div>
+                                <span ng-init="$parent.tucach = ($parent.tucach + x.tucach); "></span>
+                                <div class="col-md-6"><span average-star-rating ng-model="tucach" max="5"></span></div> 
+                            </div>
+                        </div>
+                    </div>
+                </div><!--classsInfo-->
+            </div>
+        </div>
+    </div>
+</div>

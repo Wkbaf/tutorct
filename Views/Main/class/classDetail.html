@@ -1,0 +1,76 @@
+<!-- classDetail -->
+<div class="row banner" ng-controller="classInfo">
+    <h1>{{lop.monhoc}}</h1>
+    <h3>{{giasu.hoten}}</h3>
+    <hr>
+    <div class="col-md-6">     
+        <p><b>Khai Giảng: </b>{{lop.start | date: 'dd-MM-yyyy'}}</p>
+        <p><b>Hạn Chót Đăng Ký: </b>{{lop.deadline | date: 'dd-MM-yyyy'}}</p>
+        <p><b>Tối Đa: </b>{{lop.hsno}} Học Sinh</p>
+        <p><b>Có Thể Đăng Ký Thêm: </b>{{lop.hsno - lop.hocsinh.length}} Học Sinh</p>
+    </div>
+
+    <div class="col-md-6">    
+        <p><b>Học phí: </b>{{lop.hocphi}} VND/Tháng</p>
+        <p><b>Nơi Học: </b>{{lop.noihoc}}</p>
+        <button class="myBtn" ng-click=signupClass(lop._id)>Đăng Ký</button>        
+    </div>
+</div>   
+<div ng-class="alert">
+    <p>{{message}}</p>
+</div>
+<div class="classContent">
+    <h3>Thông Tin Lớp Học</h3>
+    <div class="well">
+        <b>Nội dung học:</b>
+        <p>{{lop.noidung}}</p>
+        <b>Thời Khóa Biểu:</b>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Thứ</th>
+                        <th>Giờ Bắt Đầu</th>
+                        <th>Giờ Kết Thúc</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="t in lop.tkb">
+                    <tr>
+                        <td>{{t.thu}}</td>
+                        <td>{{t.giobd}}:{{t.phutbd}}</td>
+                        <td>{{t.giokt}}:{{t.phutkt}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--./classContent-->
+<div class="classInfo">
+    <h3>Thông Tin Gia Sư</h3>
+    <div class="well">        
+        <div class="row">
+            <div class="col-sm-2 col-xs-12 right30">
+                <img class="img-responsive bgImgPng" ng-src="/upload/{{avatar}}" style="margin-bottom: 20px;">
+                <p><i class="fa fa-user" aria-hidden="true"></i><span>{{hsno}} học sinh</span></p>
+                <div ng-init="avergate=1">
+                    <div ng-repeat="x in danhgia.danhgia">
+                        <span ng-init="$parent.khanang = ($parent.khanang + x.khanang); "></span>
+                        <span ng-init="$parent.phuongphap = ($parent.phuongphap + x.phuongphap); "></span>
+                        <span ng-init="$parent.tinhthan = ($parent.tinhthan + x.tinhthan); "></span>
+                        <span ng-init="$parent.tucach = ($parent.tucach + x.tucach); "></span>
+                        <span ng-init="$parent.avergate = ($parent.khanang + $parent.tinhthan +$parent.phuongphap + $parent.tucach)/(4*danhgia.danhgia.length)"></span>
+                    </div>
+                    <span average-star-rating ng-model="avergate" max="5"></span>
+                </div>                  
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-9 col-xs-12" style="margin-left: 20px;">
+                <h3>{{giasu.hoten}}</h3>
+                <p><b>Nơi Công Tác:</b> {{giasu.noicongtac}}</p>
+                <b>Kinh Nghiệm:</b>
+                <p>{{giasu.kinhnghiem}}</p>
+            </div>
+        </div>
+    </div>
+</div>

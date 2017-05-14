@@ -1,0 +1,66 @@
+<header id="header">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="header-item bg-0">
+                <div class="line headerminH" >
+                    <a href="#/index.html" id="header-logo" class="site-logo">Tutor.ct</a>
+                </div>
+
+                <div class="line">
+                    <p id="header-slogan">Kết Nối Gia Sư Với Học Sinh</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+            <div class="header-item bg-4">
+                <a id="menu-open" class="" href="javascript:void(0);">Mở Menu<span></span></a>
+
+                <nav id="navigation" class="header-menu">
+                    <ul>
+                        <li>
+                            <a href="#">Tìm kiếm trên bản đồ</a>
+                            <div class="dropdown">
+                                <ul class="bg-7">
+                                    <li><a href="#/maptutor">Tìm gia sư</a></li>
+                                    <li><a href="#/map">Tìm học sinh</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#/fstudent">Tìm Học Sinh</a>
+                        </li>
+
+                        <li>
+                            <a href="#/ftutor">Tìm Gia Sư</a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+                <nav id="submenu" class="header-menu bg-2">
+                    <ul>
+                        <li ng-hide="authenticated"><a href="#/btutor">Đăng Ký Tài Khoản Gia Sư</a></li>
+                        <li ng-hide="authenticated"><a href="#/bstudent">Đăng Ký Tài Khoản Học Viên</a></li>
+                        <!-- <li><a href="study_advice.html">Study advice</a></li> -->
+                        <li ng-hide="authenticated"><a href="#/login"><i class="icon-user"></i>Đăng Nhập</a></li>
+                        <li ng-show="authenticated"><a ng-href="#/"><i class="fa fa-home" aria-hidden="true"></i>Trang Chủ</a></li>
+                        <li ng-show="authenticated"><a ng-href="#/{{current_role}}"><i class="fa fa-tachometer" aria-hidden="true"></i>Trang Tác Vụ</a></li>
+                        <!-- <li><p ng-show="authenticated">
+                            <a href="#" ng-click="logout()"><i class="icon-user"></i>Logout</a>
+                        </p></li> -->
+                        <li class="myDropdown" ng-show="authenticated">
+                            <a ng-href="#/{{current_role}}"><i class="icon-user"></i>{{current_user}}</a>
+                            <div class="dropdown-content">
+                                <ul class="bg-7">
+                                    <a ng-href="#/{{current_role}}/editprofile" ng-if="current_role!='student'">Thông Tin Cá Nhân</a>
+                                    <a href="#" ng-click="logout()">Thoát</a>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,70 @@
+<!-- giasu/class/index -->
+<div ng-include="'include_myScript.html'"></div>
+<div ng-include="'/giasu/header.html'"></div>
+<div class="row">
+    <div class="col-sm-3 col-md-3">
+        <!--left col-->
+        <div ng-include="'/giasu/leftindex.html'"></div>
+    </div>
+    <!--/col-3-->
+    <div class="col-sm-9 col-md-9" id="mobieDash">
+        <div class="well P30" ng-controller="thaoluanDetail">
+            <h3><b>{{thaoluan.topic}}</b></h3>
+            <img src="upload/{{thaoluan.author.avatar}}" class="col-md-2 img-responsive user-photo " style="border-radius: 50%; width: 10%; margin-right: 30px">
+            <div class="col-md-9">
+                <i style="color: #4A7ED5">{{thaoluan.author.author_name}} </i>
+                <i>{{thaoluan.create_at | date:'dd/MM/yyyy'}}</i>
+                <p>{{thaoluan.content}}</p>
+                <div class="col-md-1 pull-right" style="display: inline-flex; margin-top: -100px;">
+                    <a ui-sref="thaoluan-update({thaoluanId: thaoluan._id})"><i class="glyphicon glyphicon-pencil pull-right" style="padding-right: 20px;"></i></a>
+                    <p confirmed-click="deleteThaoLuan(thaoluan._id)" ng-confirm-click="Chắc chắn xóa thảo luận này?" style="cursor: pointer; color: red"><i class="glyphicon glyphicon-trash pull-right"></i></p>
+                </div> 
+            </div>            
+        </div>
+        <div class="thaoluan">
+            <form class="comment-input form-inline" role="form" ng-submit="addResponse()">
+                <div class="form-group col-sm-10">
+                    <input type="text" style="width: 100%" class="form-control " id="" placeholder="Nhập trả lời" ng-model="answer">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Trả Lời</button>
+                </div>              
+            </form>
+        </div>
+        
+
+        <div ng-controller="announceDetail">  
+            <div ng-repeat="c in thaoluan.response">
+                <!--hs comment-->
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="thumbnail">
+                            <img class="img-responsive user-photo" src="/upload/{{c.avatar}}">
+                            <p>{{c.respondent}}</p>
+                        </div>
+                        <!-- /thumbnail -->
+                    </div>
+                    <!-- /col-sm-1 -->
+                    <div class="col-sm-11">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                {{c.answer_date | date: 'dd/MM/yyyy HH:mm:ss'}}</span>
+                            </div>
+                            <div class="panel-body">
+                                {{c.answer}}
+                                <!-- <div class="col-md-1 pull-right" style="display: inline-flex; margin-top: -50px;" ng-show={current_user == c.respondent}>
+                                    <a ui-sref="thaoluan-update({thaoluanId: thaoluan._id})"><i class="glyphicon glyphicon-pencil pull-right" style="padding-right: 20px;"></i></a>
+                                    <p confirmed-click="deleteThaoLuan(thaoluan._id)" ng-confirm-click="Chắc chắn xóa thảo luận này?" style="cursor: pointer; color: red"><i class="glyphicon glyphicon-trash pull-right"></i></p>
+                                </div>  -->
+                            </div>
+                            <!-- /panel-body -->
+                        </div>
+                        <!-- /panel panel-default -->
+                    </div>
+                    <!-- /col-sm-5 -->
+                </div>
+                <!--./hs comment-->
+            </div>
+        </div><!--comment-->
+    </div><!--col-sm-9 col-md-9-->
+</div>

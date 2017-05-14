@@ -1,0 +1,124 @@
+<!-- <script src="/assets/plugin/ckeditor/ckeditor.js"></script>
+<script src="angular-ckeditor.js"></script> -->
+<div ng-include="'/giasu/header.html'"></div>
+<div class="row ">
+	<div class="col-sm-3 col-md-3">
+        <!--left col-->
+        <div ng-include="'/giasu/leftindex.html'"></div>
+    </div>
+    <div class="col-sm-9 col-sm-9" id="mobieDash">
+        <h1 class="formHeading">Mở Lớp Mới</h1>
+        <div class="validateForm P30 ">
+            <form class="form-horizontal info-form" id="editClass mobieDash"  name="newClass" ng-submit=addClass()>
+                <div class="form-group" >
+                    <label class="control-label col-sm-2" for="mon">Môn Học:</label>
+                    <select id="mon" class="mySelect" ng-controller="getTutorByUsername" ng-model="tutor.monhoc" name="mon" ng-options="daymon for daymon in tutor.daymon" required>
+                        <option value="">-- Chọn môn học --</option>                    
+                    </select> 
+                    <span class="required" ng-show="newClass.mon.$touched && newClass.mon.$invalid">Vui lòng chọn môn học</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="start">Khai Giảng:</label>
+                    <div class="col-sm-4">
+                        <input type="date" name="start" id="start" ng-model="tutor.start" required>
+                        <span class="required" ng-show="newClass.start.$touched && newClass.start.$invalid">Vui lòng chọn ngày khai giảng</span>
+                    </div>
+                    <label class="control-label col-sm-2" for="end">Hạn Chót Đăng Ký:</label>
+                    <div class="col-sm-4">
+                        <input type="date" name="end" id="end" ng-model="tutor.deadline" required>
+                        <span class="required" ng-show="newClass.end.$touched && newClass.end.$invalid">Vui lòng chọn hạn chót đăng ký</span>
+                    </div>                   
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="hocphi">Học Phí:</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="hocphi" name="fee" ng-model="tutor.hocphi" required>    
+                    </div>
+                    <div class="col-sm-1"><p class="unit_form">VND/Tháng</p></div>
+                    <label class="control-label col-sm-2" for="no" >Số Lượng:</label>
+                    <div class="col-sm-2">
+                        <input type="number" id="no" name="no" ng-model="tutor.hsno" required>
+                    </div>
+                    <div class="col-sm-2"><p class="unit_form">Học Sinh</p></div>                  
+                </div>
+                    <div class="right30 required" ng-show="newClass.fee.$touched && newClass.fee.$invalid">Vui lòng nhập học phí</div>
+                    <div class="right30 required" ng-show="newClass.no.$touched && newClass.no.$invalid">Vui lòng nhập số lượng học sinh</div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="noi">Nơi Học:</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="noi" name="noihoc" ng-model="tutor.noihoc" required>
+                        <span class="required" ng-show="newClass.noihoc.$touched && newClass.noihoc.$invalid">Vui lòng nhập nơi học.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="noidung">Nội Dung:</label>
+                    <div class="col-sm-10">
+                        <textarea id="noidung" ng-model="tutor.noidung" name="noidung" required></textarea>
+                        <span class="required" ng-show="newClass.noidung.$touched && newClass.noidung.$invalid">Vui lòng nhập nội dung sẽ dạy</span>
+                        <!-- <text-angular ng-model="tutor.noidung"></text-angular> -->
+                    </div>
+                </div>                
+                <fieldset>
+                    <legend style="color:#fff">Thời Khóa Biểu</legend>   
+                    <div class="row tkb">
+                        <label class="col-md-2">Thứ</label>
+                        <label class="col-md-4">Giờ Bắt Đầu</label>
+                        <label class="col-md-4">Giờ Kết Thúc</label>
+                    </div>                             
+                    <div class="row tkb" ng-repeat="tk in tkb">
+                        <select class="col-md-2 mySelect" name="thu" ng-model="tk.thu" ng-options="t for t in thu" required>
+                            <option value="">Thứ</option>                            
+                        </select>
+                        <span class="required" ng-show="newClass.thu.$touched && newClass.thu.$invalid">Vui lòng chọn thứ</span>
+
+                        <select class="col-md-1 mySelect" name="giobd" ng-model="tk.giobd" ng-options="n for n in [] | range:24" required>
+                            <option value="">Giờ</option>                            
+                        </select>
+                        <span class="required" ng-show="newClass.giobd.$touched && newClass.giobd.$invalid">Vui lòng chọn giờ bắt đầu</span>
+                        
+                        <select class="col-md-1 mySelect" name="phutbd" ng-model="tk.phutbd" ng-options="n for n in [] | range:60" required>
+                            <option value="">Phút</option>                            
+                        </select>
+                        <span class="required" ng-show="newClass.phutbd.$touched && newClass.phutbd.$invalid">Vui lòng chọn phút bắt đầu</span>
+
+                        <select class="col-md-1 mySelect" name="giokt" ng-model="tk.giokt" ng-options="n for n in [] | range:24" required>
+                            <option value="">Giờ</option>                            
+                        </select>
+                        <span class="required" ng-show="newClass.giokt.$touched && newClass.giokt.$invalid">Vui lòng chọn giờ kết thúc</span>
+
+                        <select class="col-md-1 mySelect" name="phutkt" ng-model="tk.phutkt" ng-options="n for n in [] | range:60" required>
+                            <option value="">Phút</option>                            
+                        </select>
+                        <span class="required" ng-show="newClass.phutkt.$touched && newClass.phutkt.$invalid">Vui lòng chọn phút kết thúc</span>
+
+                        <button class="col-md-1 removeBtn" type="button" ng-if="$last && $index > 0" ng-click="removeTkb()" data-toggle="tooltip" data-placement="bottom" title="Xóa">-</button>
+                    </div> 
+                    <button type="button" class="col-md-2 pull-right removeBtn addBtn" ng-click="addTkb()"  data-toggle="tooltip" data-placement="bottom" title="Thêm Ngày">
+                            +</button>
+                </fieldset>
+                        
+                    <div class="form-group">
+                        <div class="col-sm-3 col-sm-offset-1">
+                            <button type="submit" class="my-form-button base-text-color">Mở Lớp</button>
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                </form>
+
+                
+
+            </div>
+        <div ng-show="message">
+            <div ng-class="alert">{{message}}</div>
+        </div>
+        <style type="text/css">
+            .btn-group:{
+                width: 10px;
+            }
+        </style>
+    </div>
+</div>
+<div ng-include="'include_myScript.html'"></div>

@@ -1,0 +1,94 @@
+<section class="main-content" ng-init="checkInvalidUrl()">
+                <div class="page-title P30">
+                    <h2 class="fl-l">LIÊN LẠC VỚI HỌC SINH</h2>
+                </div>
+
+                <div class="row matchHeight-container">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="info-item box P30 bg-7 corner">
+                            <h1>FORM LIÊN LẠC HOC SINH</h1>
+
+                            <form name="contactForm" class="info-form" ng-submit="contactStudent(current_user)">
+
+                                <input type="text" placeholder="Tiêu đề liên lạc" name="subject" class="inputLog" ng-model="mailToStudent.subject" required />
+                                <div role="alert">
+                                  <span class="error" ng-show="contactForm.subject.$error.required">
+                                    Trường bắt buộc không rỗng!</span>
+                                </div>
+
+                                <textarea placeholder="Nội dung liên lạc" name="user_message" class="inputLog" ng-model="mailToStudent.message" required></textarea>
+                                <div role="alert">
+                                  <span class="error" ng-show="!contactForm.subject.$error.required && contactForm.user_message.$pristine || contactForm.user_message.$touched && contactForm.user_message.$error.required">
+                                    Trường bắt buộc không rỗng!</span>
+                                </div>
+
+                                <button class="base-text-color" type="submit" ng-disabled="contactForm.subject.$error.required || contactForm.user_message.$touched && contactForm.user_message.$error.required || contactForm.user_message.$pristine"><i class="icon-search"></i>Contact now</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6">
+                        <div class="content-slider-container box">
+                            <div class="content-slider" data-animation="fade">
+                                <div class="slides-container">
+                                    <div class="slide">
+                                        <img class="img-responsive" src="images/slide_img/slider_small_4.jpg" alt="demo">
+
+                                        <div class="description">
+                                            <div class="inner">
+                                                <p class="title">Inspiring story of<br />Success</p>
+
+                                                <p>
+                                                    Manor cutlery benefiting metropolitan caviar inspiring monogram brokerage brokerage delegate elegant. Butler sheer genuine philanthropic in polo rare
+                                                </p>
+
+                                                <a href="#" class="custom-btn">Learn More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slide">
+                                        <img class="img-responsive" src="images/upcoming_5.jpg" alt="demo">
+
+                                        <div class="description">
+                                            <div class="inner">
+                                                <p class="title">1 Inspiring story of<br />Success</p>
+
+                                                <p>
+                                                    1 Manor cutlery benefiting metropolitan caviar inspiring monogram brokerage brokerage delegate elegant. Butler sheer genuine philanthropic in polo rare
+                                                </p>
+
+                                                <a href="#" class="custom-btn">Learn More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slide">
+                                        <img class="img-responsive" src="images/upcoming_6.jpg" alt="demo">
+
+                                        <div class="description">
+                                            <div class="inner">
+                                                <p class="title">2 Inspiring story of<br />Success</p>
+
+                                                <p>
+                                                    2 Manor cutlery benefiting metropolitan caviar inspiring monogram brokerage brokerage delegate elegant. Butler sheer genuine philanthropic in polo rare
+                                                </p>
+
+                                                <a href="#" class="custom-btn">Learn More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+</section>
+<script  src="js/jquery-1.11.0.min.js"></script>
+<script  src="js/jquery.nicescroll.min.js"></script>
+<script  src="js/jquery.matchHeight-min.js"></script>
+<script  src="js/jquery.superslides.min.js"></script>
+<script  src="js/jquery.fs.boxer.min.js"></script>
+<script  src="js/jquery.easing.js"></script>
+<script  src="js/jquery.main.js"></script>

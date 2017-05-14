@@ -1,0 +1,337 @@
+<section class="main-content">
+    <div class="page-title P30">
+        <h2 class="fl-l">Directory</h2>
+    </div>
+     <div class="row matchHeight-container">
+        <div class="info-container" ng-controller="StudentController">
+            <div class="col-sm-3 col-md-3" ng-init="loadLeftStudent(current_user)"><!--left col-->
+
+          <ul class="list-group">
+            <li class="list-group-item text-muted">Profile</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Real name</strong></span> {{leftProfile.fullname}}</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span>{{leftProfile.created_at | date:'dd-MM-yyyy'}} </li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Last seen</strong></span> Yesterday</li>
+
+          </ul>
+
+
+          <ul class="list-group">
+            <li class="list-group-item text-muted">Setting</li>
+            <li class="list-group-item"><strong><a href="#/giasu/editaccount">Account</a></strong></li>
+            <li class="list-group-item"><strong><a href="#/giasu/editprofile">Profile</a></strong></li>
+            <li class="list-group-item"><strong><a href="#/giasu/editjob">Job Infomation</a></strong></li>
+            <li class="list-group-item"><strong><a href="#/giasu/uploadavatar">Avatar</a></strong></li>
+          </ul>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">Option</div>
+            <div class="panel-body">
+                <a href="#offcanvas-push" uk-toggle="target: #offcanvas-push">Đăng kí nhu cầu học</a>
+
+            </div>
+          </div>
+
+        </div><!--/col-3-->
+        <div class="col-sm-9 col-md-9" id="mobieDash">
+
+          <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a data-target='#home' data-toggle="tab">Home</a></li>
+            <li><a data-target='#message' data-toggle="tab">Messages</a></li>
+            <li><a data-target='#settings' data-toggle="tab">Profile</a></li>
+            <li><a data-target='#accounts' data-toggle="tab">Account</a></li>
+            <li><a data-target='#avatar' data-toggle="tab">Avatar</a></li>
+          </ul>
+
+          <div class="tab-content" >
+            <div class="tab-pane active" id="home">
+            <div class="list-group-item text-muted">YOUR TUTOR</div>
+                <div class="padding">
+                    <div class="row row-sm" ng-init="tutorAccept()">
+                        <div class="col-xs-12 col-md-4 uk-inline" ng-repeat="tutorA in tutorAccepted">
+                            <div class="list-item r m-b tutor" >
+                                <a herf="#" class="list-left">
+                                    <span class="w-40 avatar">
+                                        <img ng-src="/upload/{{tutorA.user.avatar}}" ng-hide="thumbnail.dataUrl">
+                                        <div ng-if="thumbnail.dataUrl">
+                                            <img ng-src="{{thumbnail.dataUrl}}">
+                                        </div>
+                                    </span>
+                                </a>
+                                <div class="list-body">
+                                    <div class="text-ellipsis">
+                                    <a href="">{{tutorA.value.tutorname}}<i class="uk-button uk-button-default menudot margindot"></i></a>
+                                    </div>
+                                    <div uk-dropdown class="uk-animation-slide-bottom" aria-hidden="true" style="top:208px">
+                                        <ul>
+                                            <li><a href="#modal-full" ng-click="viewTutor(tutorA.value.username,tutorA.user.avatar)" uk-toggle>View</a></li>
+                                            <li><a href="#offcanvas-flip" uk-toggle="target: #offcanvas-flip">Discuss</a></li>
+                                            <li><a href="#">Remove</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- for modal view tutor -->
+                    <div id="modal-full" class="uk-modal-full uk-animation-slide-bottom" uk-modal>
+                        <div class="uk-modal-dialog">
+                            <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
+                                <div class="uk-background-cover" uk-height-viewport >
+                                    <img ng-src="/upload/{{tutorAvatar}}" ng-hide="thumbnail.dataUrl">
+                                    <div ng-if="thumbnail.dataUrl">
+                                        <img ng-src="{{thumbnail.dataUrl}}">
+                                    </div>
+                                </div>
+                                <div class="uk-padding-large">
+                                    <h1>{{tutor.hoten}}</h1>
+                                    <p></p>
+                                    <button class="uk-modal-close-full" type="button" uk-close>CLOSE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+             </div><!--/tab-pane-->
+             <div class="tab-pane" id="message">
+
+               <h2></h2>
+               <div ng-show="mailbox" id="mailbox" ng-init="mailStudent(current_user)">
+                    <div class="list-group-item text-muted">Inbox
+                        <button class="glyphicon glyphicon-repeat pull-right" ng-click="reloadMailbox()"></button>
+                        <button class="glyphicon glyphicon-trash pull-right" ></button>
+                    </div>
+
+                   <div class="list white " ng-repeat="mail in yourContact">
+                  <div class="list-item b-l b-l-2x b-info">
+                    <div class="list-left">
+                    <span><input type="checkbox" ng-true-value="mail.value._id"></span>
+                      <span class="w-40 avatar">
+                      <!-- avatar default -->
+                        <img ng-src="/upload/{{mail.user.avatar}}" ng-hide="thumbnail.dataUrl">
+                        <!-- avatar upload if uploadavatar -->
+                        <div ng-if="thumbnail.dataUrl">
+                            <img ng-src="{{thumbnail.dataUrl}}">
+                        </div>
+                      </span>
+                    </div>
+                    <div class="list-body mailboxstudent" ng-click="viewmail(mail.value._id, mail.user.avatar)">
+                      <div class="pull-right text-muted text-xs">
+                        <span class="hidden-xs">{{mail.value.created_at | date : 'dd-MM-yyyy:hh:mm'}}</span>
+                      </div>
+                      <div>
+                        <a href class="_500">{{mail.value.subject}}</a>
+                        <span class="label label-xs m-l-sm text-u-c">{{mail.tutorname}}</span>
+                      </div>
+                      <div class="limit text-ellipsis text-muted text-sm">{{mail.value.message}}</div>
+                      <div class="mobieDate">{{mail.value.created_at | date : 'dd-MM-yyyy:hh:mm'}}</div>
+                    </div>
+                  </div>
+                </div>
+               </div>
+               <div ng-hide="mailbox">
+                    <!-- {{yourViewMail}} -->
+                    <div class="row">
+                        <div class="col-md-9"><h2 style="padding: 34px;" class="_300 ng-binding">{{yourViewMail.subject}}</h2></div>
+                        <div class=" col-md-3"> <button class="glyphicon glyphicon-arrow-left" ng-click="backMailBox()"></button></div>
+                    </div>
+                    <div class="row">
+                        from
+                        <a href="#modal-full" ng-click="viewTutor(yourViewMail.username,mailAvatar)" uk-toggle>     {{yourViewMail.tutorname}}
+                        </a>
+                        <span class="text-xs ng-binding">on {{yourViewMail.created_at | date : 'dd-MM-yyyy:hh:mm'}}
+                        </span>
+                    </div>
+                    <div class="row">
+                        {{yourViewMail.message}}
+                    </div>
+                  <div>
+                    <div class="box">
+                      <div class="box-header ng-show" ng-hide="reply">
+                        <div class="m-b-lg">
+                        Click here to <a href="#" class="text-u-l" ng-click="mailAccept(yourViewMail._id)">Accept</a> or <a href="#" class="text-u-l" ng-click="mailDeny(yourViewMail._id)">Decide</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               </div>
+            </div>
+              <!--  <ul class="list-group" ng-init="mailStudent(current_user)">
+                  <li class="list-group-item text-muted">Inbox</li>{{yourContact}}
+                  <li class="list-group-item text-right" ng-repeat="mail in yourContact">
+                  <span class="col-md-3">{{mail.tutorname}}</span>
+                  <span class="col-sm-3">{{mail.subject}}&nbsp;</span>
+                  <span class="limit col-md-3">-&nbsp;{{mail.message}}</span>
+                  <a href="#" class="pull-left"></a> {{mail.created_at}}</li>
+                </ul> -->
+
+            <!--/tab-pane-->
+             <div class="tab-pane" id="settings">
+                  <hr>
+                  <form class="form" method="post" id="registrationForm" ng-submit="updateProfileStudent(current_user)" ng-init="loadProfileStudent(current_user)">
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                              <label for="first_name"><h4>Full name</h4></label>
+                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any." ng-model="yourProfile.fullname">
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                            <label for="last_name"><h4>Phone</h4></label>
+                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your phone if any." ng-model="yourProfile.phone">
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                              <label for="email"><h4>Email</h4></label>
+                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email." ng-model="yourProfile.mail">
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                              <label for="address"><h4>Location</h4></label>
+                              <input type="text" class="form-control" id="location" placeholder="somewhere" title="enter a location"
+                              ng-model="yourProfile.diachi">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                                <button class="btn btn-lg btn-success" type="submit"> Save</button>
+                                <button class="btn btn-lg" type="reset"> Reset</button>
+                            </div>
+                      </div>
+                  </form>
+             </div><!--/tab-pane-->
+
+              <div class="tab-pane" id="accounts">
+              <hr>
+                    <form class="form" method="post" id="registrationForm" ng-submit="updateAccountStudent(current_user)" ng-init="loadAccountStudent(current_user)">
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                              <label for="first_name"><h4>Username</h4></label>
+                              <input type="text" class="form-control"  placeholder="first name" title="enter your first name if any." ng-model="user.username">
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                            <label for="last_name"><h4>Email</h4></label>
+                              <input type="text" class="form-control" placeholder="last name" title="enter your email if any." ng-model="user.email">
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                              <label for="password"><h4>Password</h4></label>
+                              <input type="password" class="form-control"  ng-model="user.newpassword">
+                          </div>
+                      </div>
+                      <div class="form-group">
+
+                          <div class="col-xs-6">
+                              <label for="address"><h4>Confirm Password</h4></label>
+                              <input type="password" class="form-control" >
+                          </div>
+                      </div>
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                                <button class="btn btn-lg btn-success" type="submit"> Save</button>
+                            </div>
+                      </div>
+                  </form>
+              </div><!--/tab-pane-->
+
+              <div class="tab-pane" id="avatar" ng-controller="TutorProfileController">
+              <hr>
+               <h1 class="formTitle">Account</h1>
+                    <div>
+                        <img class="mythumbnail" ng-src="/upload/{{user.avatar}}" ng-hide="thumbnail.dataUrl">
+                        <div ng-if="thumbnail.dataUrl">
+                            <img class="mythumbnail" ng-src="{{thumbnail.dataUrl}}">
+                        </div>
+                    </div>
+                    <form  class="form-horizontal info-form" id="editProfile" name="editAcc" ng-submit=uploadAvatar()>
+                        <input type="hidden" ng-model="user._id" name="userid">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="avatar">Your photo:</label>
+                            <div class="col-sm-6">
+                                <input type="file" id="avatar" file-model="user.avatar" name="myfile" ng-disabled="uploading"onchange="angular.element(this).scope().photoChange(this.files)" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="submit" class="base-text-color" style="padding-top: 0px; margin-top: 0px" ng-disabled="uploading">Upload</button>
+                            </div>
+                        </div>
+                        <div ng-show="message">
+                            <div ng-class="alert">{{message}}</div>
+                        </div>
+                    </form>
+              </div><!--/tab-pane-->
+
+
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+        </div>
+    </div>
+    <!-- option -->
+    <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true" >
+        <div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-push margform" >
+
+            <h6>Đăng nhu cầu học theo môn</h6>
+            <hr class="uk-divider-icon">
+           <form ng-controller="StudentController" ng-submit="feedbackSubject(current_user,yourSubject)" ng-init="load()">
+                <fieldset ui:sortable class="uk-fieldset">
+
+                    <div class="uk-margin marginput">
+                        <div class="uk-inline"  >
+                            <button class="uk-button uk-button-default" type="button">Choose your subject</button>
+
+                            <div uk-dropdown uk-overflow-auto >
+                                <label style="width: 100%" ng-repeat='sub in subject'>
+                                    <ng-letter-avatar data="{{sub.tenmon}}"></ng-letter-avatar>
+                                    <input class="uk-radio" type="radio" name="subject" ng-model="$parent.yourSubject" ng-value="sub.tenmon"> <span style="color: red">{{sub.tenmon}}</span>
+                                </label>
+                            </div>
+                        <!-- <ng-letter-avatar data="{{feedback}}" ng-model="feedbackSubject.feedback"></ng-letter-avatar>{{feedback}} -->
+                        </div>
+                    </div>
+                    <input type="checkbox" name="" ng-click="">I could't find subjects
+<!--                     <div class="uk-margin marginput">
+                        <label>No subject found</label>
+                        <input class="uk-input" type="text" placeholder="">
+                    </div> -->
+
+                </fieldset>
+                <button type="submit" >Send</button>
+            </form>
+
+        </div>
+    </div>
+    <!-- discuss -->
+    <div id="offcanvas-flip" uk-offcanvas="flip: true">
+        <div class="uk-offcanvas-bar">
+
+            <h3>Title</h3>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+            <button class="uk-button uk-button-default uk-offcanvas-close uk-width-1-1 uk-margin" type="button">Close</button>
+
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(document).on("click", ".optionfr", function() {
+// alert ("fdsafsda");
+$('.fsadfa').show();
+  });
+</script>
+<!-- open mail -->

@@ -1,0 +1,81 @@
+<!-- giasu/class/index -->
+<div ng-include="include_myScript.html"></div>
+<div ng-include="'/giasu/header.html'"></div>
+<div class="row" >
+    <div class="col-sm-3 col-md-3">
+        <!--left col-->
+        <div ng-include="'/giasu/leftindex.html'"></div>
+    </div>
+    <!--/col-3-->
+    <div class="col-sm-9 col-md-9" id="mobieDash">
+        <div ng-controller="getClassId">
+            <a ui-sref="thaoluan-new({classId: param})" class="btn btn-primary">Tạo Thảo Luận Mới</a>
+        </div>        
+        <h1>Danh Sách Các Thảo Luận</h1>
+        <div ng-controller="listThaoLuan" style="margin-top: 0px; padding-top:0px;"">
+            <div class="list-item " ng-repeat="t in thaoluan" >
+                <a ui-sref="thaoluan-detail({thaoluanId: t._id})">
+                <div style="border: 1px solid #C8C5C5; padding: 10px">
+                    <div class="list-left">
+                        <span class="w-40 avatar">
+                            <img ng-src="/upload/{{t.author.avatar}}" ng-hide="thumbnail.dataUrl">
+                            <div ng-if="thumbnail.dataUrl">
+                                <img ng-src="{{thumbnail.dataUrl}}">
+                            </div>
+                        </span>
+                    </div>
+                    <div class="list-body" >
+                        <div class="text-ellipsis" style="color: #000">
+                            <div class="col-md-8">
+                                <b >{{t.topic}}</b>
+                                <p>{{t.create_at | date: 'dd-MM-yyyy'}}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>Trả lời: {{t.response.length}}</p>
+                                <p>Lượt xem: {{t.view}}</p>
+                            </div>
+                            <!-- <div class="col-md-1" style="display: inline-block;">
+                                <p><i class="glyphicon glyphicon-trash pull-right"></i></p>
+                                <p><i class="glyphicon glyphicon-pencil pull-right"></i></p>
+                            </div> -->
+                        <!-- <div>
+                            <a href="">{{tt.author.top}}
+                            <span>
+                                <a href="" class="glyphicon glyphicon-trash pull-right" ng-click="releaseTutor(tutorA.value.giasu.gs_username,current_user)"></a>
+                            </span>
+                            <span>
+                                <a class="glyphicon glyphicon-comment pull-right" href="#offcanvas-flip" uk-toggle="target: #offcanvas-flip" ng-click="loadChat(tutorA.value.giasu.gs_username)"></a>
+                            </span>
+                            <span>
+                                <a class="glyphicon glyphicon-eye-open pull-right" href="#modal-full" ng-click="viewTutor(tutorA.value.giasu.gs_username,tutorA.user.avatar)" uk-toggle>
+                                </a>
+                            </span>
+
+                        </a>
+                        </div>   -->
+                        
+                        </div>
+                        </div><!--text-ellipsis-->
+                    </div><!--list-body-->
+                </div>
+                </a>
+            </div>
+            <p class="notFound">{{message}}</p>
+            <hr>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="pagination" id="myPager"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <pagination
+        boundary-links="true"
+        max-size="3"
+        items-per-page="itemsPerPage"
+        total-items="giasu.length"
+        ng-model="currentPage"
+        ng-change="pageChanged(giasu, 1)">
+    </pagination> -->
+</div>

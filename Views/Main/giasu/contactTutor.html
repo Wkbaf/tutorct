@@ -1,0 +1,68 @@
+<!-- ko the kep hop voi controller checkLogin why? -->
+<div ng-controller="checkLogin"></div>
+<div class="col-md-6 info-item box P30 bg-7">
+	<h3>Hãy để gia sư hiểu hơn về bạn</h3>
+	<p>* thông tin bắt buộc</p>
+	<form id="form-horizontal" class=" ng-pristine ng-valid info-form" role="form" ng-submit="getContactTutor()">
+		<input type="hidden" ng-model="reqContact.giasu" ng-init="reqContact.giasu= giasuId">
+		<input type="hidden" ng-model="reqContact.hocsinh_username" ng-init="reqContact.hocsinh_username = current_user">
+		<div class="form-group">
+			<label>Bạn định học môn gì?</label><span> *</span>
+		    <select ng-controller="infoTutor" ng-model="reqContact.monhoc" ng-options="daymon for daymon in giasu.daymon" required="required" style="color:#000">
+		    	<option value="">--Chọn môn học--</option>
+		    </select>
+		</div>
+		<div class="form-group">
+			<label for="khanang">Bạn có khả năng hay thành tích gì?</label>
+		    <textarea id="khanang" ng-model="reqContact.khanang" rows="4">  </textarea>
+		</div>
+
+		<div class="form-group">
+			<label for="hanche">Bạn có những hạn chế nào cần gia sư giúp đỡ?</label>		
+		    <textarea placeholder="" ng-model="reqContact.hanche" rows="4">  </textarea>
+		</div>
+
+		<div class="form-group">
+			<label for="nguyenvong">Bạn có nguyện vọng gì?</label>		
+		    <textarea placeholder="" ng-model="reqContact.nguyenvong" rows="4">  </textarea>
+		</div>
+
+		<div class="form-group">
+			<label for="khac">Bạn có điều gì khác muốn chia sẻ với gia sư?</label>		
+		    <textarea placeholder="" ng-model="reqContact.khac" rows="4">  </textarea>
+		</div>
+		<div class="form-group"> 
+		    <button type="submit" class="base-text-color">Gửi</button>
+  		</div>
+  		<div ng-class="alert" role="alert">
+		   	{{message}}
+		</div>
+				
+	</form>
+	
+	
+</div>
+<div class="col-md-6" ng-controller="infoTutor">
+	<h2>Thông Tin Gia Sư</h2>
+	<div class="row  P30">
+		<div class="col-sm-3">
+			<img class="img-responsive bgImgPng" ng-src="/upload/{{avatar}}" style="margin-bottom: 20px;">
+		</div>
+		<div class="col-sm-9" style="padding-left: 10px;">
+			<p><b>Họ tên: </b>{{giasu.hoten}}</p>
+			<p><b>Ngày sinh: </b>{{giasu.ngaysinh | date: 'dd-MM-yyyy'}}</p>
+			<p><b>Nơi công tác: </b>{{giasu.noicongtac}}</p>			
+		</div>
+	</div>
+	<div>
+		<b>Dạy môn:</b>
+		<ul ng-repeat="m in giasu.daymon">
+			<li>{{m}}</li>
+		</ul>
+		<b>Nơi có thể dạy:</b>
+		<ul ng-repeat="d in giasu.noiday">
+			<li>{{d}}</li>
+		</ul>
+		<b>Kinh Nghiệm: </b><p>{{giasu.kinhnghiem}}</p>
+	</div>
+</div>

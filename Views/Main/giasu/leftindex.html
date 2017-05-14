@@ -1,0 +1,28 @@
+<!--left col-->
+<div ng-controller="TutorProfileController">
+<div ng-controller="dashbroadTutorInfo">
+<ul class="list-group">
+    <li class="list-group-item text-muted">Thông Tin Cá Nhân</li>
+    <li class="list-group-item text-right"><span class="pull-left"><strong>Tham Gia</strong></span> {{user.created_at | date: "dd-MM-yyyy"}}</li>
+ <!--    <li class="list-group-item text-right"><span class="pull-left"><strong>Last seen</strong></span> Yesterday</li> -->
+    <li class="list-group-item text-right"><span class="pull-left"><strong>Họ Tên</strong></span>{{tutor.hoten}}</li>
+</ul>
+<ul class="list-group">
+    <li class="list-group-item text-muted">Tác Vụ<i class="fa fa-dashboard fa-1x"></i></li>
+    <li class="list-group-item"><strong><a href="#/giasu">Trang Chủ</a></strong></li>
+    <li class="list-group-item text-right" ng-controller="tutorController"><span class="pull-left"><strong><a href="#/giasu/danhsachhocsinh">Học Sinh</a></strong></span><span ng-controller="listStudent">{{list.length}}</span></li>
+    <li class="list-group-item text-right" ng-controller="listClass"><span class="pull-left"><strong><a href="#/giasu/class">Lớp Học</a></strong></span>{{lop.length}}</li>
+    <li class="list-group-item"><strong><a href="#/giasu/monhoc">Thêm môn học</a></strong></li>
+    <!-- <li class="list-group-item text-right"><span class="pull-left"><strong><a href="#/giasu/announce">Thông Báo</a></strong></span> số</li> -->
+    <!-- <li class="list-group-item text-right"><span class="pull-left"><strong><a href="#/giasu/class">Thảo Luận</a></strong></span> số</li> -->
+    <!-- <li class="list-group-item text-right"><span class="pull-left"><strong><a href="#/giasu/class">Đánh Giá Của Học Sinh</a></strong></span> số</li> -->
+    <!-- <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li> -->
+</ul>
+<!-- <div class="panel panel-default">
+    <div class="panel-heading">Social Media</div>
+    <div class="panel-body">
+        <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+    </div>
+</div> -->
+</div>
+</div>

@@ -1,0 +1,466 @@
+.thaoluan{
+    margin-top: 70px;
+}
+.comment-input{
+    background-color: #EDEDED;
+    border: 1px solid #C5C5C5;
+    border-radius: 2px;
+    padding: 5px;
+    position: relative;
+    height: 50px;
+    margin-bottom: 20px;
+}
+.comment-input form{
+    position: absolute;
+}
+.comment-input button{
+    margin-left: 5px;
+}
+.unit_form{
+    color: rgba(255,255,255,0.9);
+    margin-left: -20px;
+    margin-top: 7px;
+}
+.searchInput{
+    margin: 20px 0px;
+}
+.searchInput input[type="text"]{
+    position: relative;
+    padding-left: 30px;
+    text-indent: 15px;
+}
+
+.searchInput  .fa-search{
+    position: absolute;
+    z-index: 1000;
+    left: 10px;
+    top: 30%;
+    color: #BBB2B2;
+}
+.maxWidth{
+    max-width: 150px;
+    margin-right: 5px;
+}
+.myContainer {
+    width: 100%;
+    min-height: 200px;
+    margin: 0px;
+    position: relative;
+}
+
+.myForm {
+    display: flex;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 60%;
+    left: 40%;
+    right: 0%;
+    margin-top: -30px;
+    margin-left: -90px;
+    width: 60%;
+}
+
+.myForm button,
+.myForm select {
+    border-radius: 0;
+    margin-right: 10px;
+}
+
+.myForm select {
+    width: 100%;
+    height: 40px;
+}
+
+.myForm button {
+    background-color: #fff;
+    color: #576683;
+    font-weight: bold;
+    width: 120px;
+    height: 55%;
+}
+
+.myForm button:hover {
+    background-color: #576683;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.myForm .input-type {
+    color: #606060;
+}
+.banner{
+    background-color: #576683;
+    color: rgba(255,255,255, 0.9);
+    padding: 30px 60px;
+}
+.banner-dashbroad{
+    background-color: #6F6F6F;
+    padding: 5px 30px;
+    color:rgba(255,255,255, 0.9);
+}
+.myBtn{
+    padding: 10px 20px;
+    background-color: rgba(255,255,255,0.9);
+    color: #576683;
+    border: #576683 1px solid;
+    font-weight: bold;
+}
+.myBtn:hover{
+    background-color: #576683;
+    color: rgba(255,255,255,0.9);
+    border: rgba(255,255,255,0.9) 1px solid;
+}
+.btnBgWhite{
+    padding: 10px 20px;
+        background-color: #576683;
+    color: rgba(255,255,255,0.9);
+}
+.btnBgWhite:hover{
+    padding: 10px 20px;
+    background-color: rgba(255,255,255,0.9);
+    color: #576683;
+    border: #576683 1px solid;
+    font-weight: bold;
+}
+/*for news box plugin*/
+.glyphicon {
+    margin-right: 4px !important; /*override*/
+}
+.pagination .glyphicon {
+    margin-right: 0px !important; /*override*/
+}
+.pagination a {
+    color: #555;
+}
+.panel ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+.news-item {
+    padding: 4px 4px;
+    margin: 0px;
+    border-bottom: 1px dotted #555;
+}
+/*./for news box plugin*/
+.mySelect{
+    color: rgba(255,255,255,0.5);
+    background-color: #576683;
+    padding: 8px 20px;
+    overflow: hidden;
+}
+.selHorizontal{
+    position: absolute;
+}
+.mySelect:focus,.mySelect:hover{
+    color:#000;
+    background-color: #fff;
+}
+.mySelect label{
+    float: left;
+}
+.formHeading{
+    text-align: center;
+}
+.tkb select{
+    width: 14%;
+    margin: 0px 2px 10px 10px;
+}
+.tkb select:nth-child(3){
+    margin-right: 20px;
+}
+.removeBtn{
+    background: #C76868;
+    color: #FFF;
+    width: 40px;
+    height: 33px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 21px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px 9px;
+    vertical-align: top;
+    line-height: 100%;
+    margin-left: 5px;
+}
+.removeBtn:hover{
+    background:#AB2C2C;
+}
+.addBtn{
+    background:#FFB244;
+}
+.addBtn:hover{
+    background:#FA8D00;
+}
+.fa{
+    margin-right: 20px;
+}
+.formLink{
+    color: #fff;
+    text-decoration: none;
+}
+.formLink:hover{
+    color: #fff;
+    text-decoration: underline;
+}
+.hoverLink:hover{
+    text-decoration: underline;
+    color: #3E2B92;
+}
+.hint{
+    color:#E30303;
+    margin-top: 10px;
+}
+.bgImgPng{
+    background-color: #A8C7DD;
+    padding: 0;
+    margin: 0;
+/*    max-height: 120px;*/
+}
+.mythumbnail{
+    display: block;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    max-width: 300px;
+    margin-bottom: 30px;
+    background-color: #fff;
+}
+
+.validateForm{
+    background-color:#576683;
+    /*height: 100vh;*/
+}
+.form-control{
+    border-radius: 0px;
+}
+.formTitle{
+    color: #fff;
+    text-align: center;
+    padding-bottom: 40px;
+}
+#editProflie{
+    margin-right: 50px;
+
+}
+.error{
+    color:#FFE403;
+}
+.required{
+    color:#FFE403;
+    padding-left: 5px;
+    padding-right: 10px;
+    font-size: 1.2em;
+}
+.tab-pane button{
+    /*width: 30%;*/
+}
+
+.notFound{
+    font-style: italic;
+    font-size: 1.5em;
+    text-align: center;
+}
+.right30{
+    margin-left: 20px;
+    padding-bottom: 10px;
+}
+.detailBox{
+    padding-left: 30px;
+    padding-top: 0px;;
+}
+
+.contentBox{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.myLabel{
+    text-align: right;
+    right: 3px;
+}
+
+.myDropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 1000;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    right: 0;
+    z-index: 1;
+}
+.dropdown-content ul, .dropdown-content li{
+  margin: 0px;
+}
+.dropdown-content a {
+    display: block;
+}
+.dropdown-content a:hover{
+    background-color: #1F4080;
+}
+
+.myDropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/*register form style*/
+
+.input-w label {
+    float: none;
+    /* if you had floats before? otherwise inline-block will behave differently */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.input-w input {
+    float: none;
+    /* if you had floats before? otherwise inline-block will behave differently */
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 39px;
+    width: 70%;
+}
+
+.info-form fieldset {
+    border: none;
+    margin: auto;
+}
+
+
+/*style raido button -> inline*/
+
+.myRadioInline {
+    display: flex;
+    position: relative;
+    margin: -25px 10px 10px 130px;
+}
+
+.myRadioInline input{
+    width: 4%;
+    margin-right: 2px;
+}
+
+.myRadioInline label{
+    margin-right: 30px;
+}
+
+/*style textarea in form*/
+
+.input-w textarea {
+    float: right;
+    margin-right: 84px;
+}
+
+.myCheckbox label {
+    display: inline;
+}
+
+.action-button {
+    float: left;
+    margin: 20px 20px auto auto;
+}
+
+
+/*hide fieldset != first*/
+
+#registerform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+#registerform input[type="text"],
+#registerform input[type="email"],
+#registerform input[type="password"]{
+    width: 100%;
+}
+/*.info-form input:not([type='button']):hover, .info-form input:not([type='button']):focus, .info-form textarea:hover, .info-form textarea:focus*/
+/*style progressbar cua register form*/
+
+#progressbar {
+    margin-bottom: 20px;
+    overflow: hidden;
+    /*   css counter to number the steps */
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 12px;
+    width: 28%;
+    float: left;
+    left: 30px;
+    position: relative;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 19px;
+    line-height: 20px;
+    display: block;
+    font-size: 10px;
+    color: #333;
+    background: #fff;
+    margin: 0 auto 8px auto;
+}
+
+
+/* progressbar connectors */
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    left: -44%;
+    top: 9px;
+    z-index: 0;
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #6D84B1;
+    color: white;
+    /*border: 1px solid #fff;*/
+}
+#progressbar li:first-child:after{
+/*   connector not need before the first step */
+  content: none;
+}
+
+.sel-col-left,
+.sel-col-right {
+    padding: 20px;
+    margin-left: 15px;
+    border: 1px solid white;
+    height: 200px;
+    overflow: auto;
+}
+.profile{
+    margin-left: 4px;
+}
+.sel-col-left h4,
+.sel-col-right h4 {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+#arrow {
+    margin-left: -10px;
+}
+.modal-dialog{
+   position: absolute;
+   left: 0%;
+   top: 0%;
+} 

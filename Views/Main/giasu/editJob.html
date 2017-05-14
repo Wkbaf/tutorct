@@ -1,0 +1,105 @@
+<!-- validate jquery plugin -->
+<script src="js/jquery.validate.js"></script>
+<script src="js/validateForm.js"></script>
+<div ng-include="'/giasu/header.html'"></div>
+<div class="row" >
+    <div class="col-sm-3 col-md-3">
+        <!--left col-->
+        <div ng-include="'/giasu/leftProfile.html'"></div>
+    </div>
+    <!--/col-3-->
+    <div class="col-sm-9 col-md-9 validateForm" style="float: right;width: 70%" ng-init="dashbroadTutorInfo()">
+        <h1 class="formTitle">Job Infomation</h1>
+        <form class="form-horizontal info-form" id="editJob" name="editJob"  ng-submit="updateJob()">
+            <input type="hidden" ng-model="tutor._id">
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="noicongtac">Nơi công tác:</label>
+                <div class="col-sm-8">
+                    <input type="text" id="noicongtac" ng-model="tutor.noicongtac">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="pwd">Dạy môn:</label>
+                <div class="col-sm-8" ng-controller="listMon">
+                    <div class="sel-col-left profile">
+                        <label class="checkbox" ng-controller="listMon" ng-repeat="m in monhoc track by m.tenmon"><input type="checkbox" ng-checked="existMon(m.tenmon)" ng-click="selDayMon(m.tenmon)" /><span></span>
+                        {{m.tenmon}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="noiday">Nơi dạy:</label>
+                <div class="col-sm-8">
+                    <div ng-repeat="c in daytai">
+                        <label><input type="checkbox" name="" ng-checked="existDay(c)" ng-click="selNoiDay(c)"/><span></span>
+                        {{c}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="kinhnghiem">Kinh nghiệm:</label>
+                <div class="col-sm-8">
+                    <textarea ng-model="tutor.kinhnghiem">
+                        
+                    </textarea>
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 col-md-offset-3">
+                    <button type="submit" class="base-text-color">Submit</button>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </form>
+    </div>
+    <!--/tab-content-->
+</div>
+<!--/col-9-->
+<div class="row matchHeight-container">
+    <div class="col-xs-12 col-md-6">
+        <div class="block-courses_info P30 bg-2 box">
+            <div class="date">
+                <p>04</p>
+                <p>September</p>
+            </div>
+            <div class="text">
+                <h2 class="title"><span>University</span> Active 2014</h2>
+                <p>
+                    Price of attendance:<span>US$3,750</span>
+                </p>
+                <a href="#" class="custom-btn big">Apply Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="block-courses_info P30 bg-4 box">
+            <div class="date">
+                <p>26</p>
+                <p>November</p>
+            </div>
+            <div class="text">
+                <h2 class="title"><span>Design</span> Construction 2013</h2>
+                <p>
+                    Price of attendance:<span>US$2,130</span>
+                </p>
+                <a href="#" class="custom-btn big">Apply Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="block-courses_info P30 bg-2 box">
+            <div class="date">
+                <p>19</p>
+                <p>September</p>
+            </div>
+            <div class="text">
+                <h2 class="title"><span>Mobile Design Course</span></h2>
+                <p>
+                    Price of attendance:<span>US$2,150</span>
+                </p>
+                <a href="#" class="custom-btn big">Apply Now</a>
+            </div>
+        </div>
+    </div>
+</div>

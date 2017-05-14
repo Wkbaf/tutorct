@@ -1,0 +1,193 @@
+<div ng-include="'include_myScript.html'"></div>
+<section class="main-content">
+    <div class="page-title P30">
+        <h2 class="fl-l">Đăng Ký Tài Khoản Gia Sư</h2>
+        <!-- <a class="share-link fl-r" href="#"><i class="icon-export"></i>Share</a> -->
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="content-intro content-intro_s2">
+            </div>
+        </div>
+    </div>
+    <div class="row matchHeight-container">
+        <div class="col-xs-12 col-md-6">
+            <div class="info-item P30 bg-7 box">
+                <h1>Form Đăng Ký Gia Sư</h1>
+                <ul id="progressbar">
+                    <li class="active">Account</li>
+                    <li>Profile</li>
+                    <li>Job</li>
+                </ul>
+                <p><span class="required">*</span> không được để trống</p>
+                <form name="registerTutor" id="registerform" class="info-form" ng-submit="btutor()">
+                    <!-- hien thong bao loi -->
+                    <div class="row show-hiden-message" ng-show="message">
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Error: </strong> {{message}}
+                        </div>
+                    </div>
+                    <!--Account detail-->
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="email" class="">Email:</label><span class="required">*</span>
+                            <input type="email" id="email" name="email" placeholder="" ng-model="regGiaSu.email" required>
+
+                            <span class="error" ng-show="registerTutor.email.$dirty && registerTutor.email.$invalid">
+                                <span ng-show="registerTutor.email.$error.required">Vui lòng nhập email.</span>
+                                <span ng-show="registerTutor.email.$error.email">Email phải gồm @</span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="">Tên đăng nhập:</label> <span class="required">*</span>
+                            <input type="text" id="username" name="username" placeholder="" ng-model="regGiaSu.username" required>
+                            <span class="error" ng-show="registerTutor.username.$dirty && registerTutor.username.$invalid">
+                                <span ng-show="registerTutor.username.$error.required">Vui lòng nhập tên đăng nhập</span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="">Mật khẩu:</label> <span class="required">*</span>
+                            <input type="password" id="password" name="password" placeholder="" ng-model="regGiaSu.password" required>
+                            <span class="error" ng-show="registerTutor.password.$dirty && registerTutor.password.$invalid">
+                                <span ng-show="registerTutor.password.$error.required">Vui lòng nhập mật khẩu</span>
+                            </span>
+                        </div>
+                        <input type="button" name="next" class="next base-text-color action-button" value="Tiếp Tục" />
+                    </fieldset>
+                    <!-- personal detail -->
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="hoten" class="">Họ tên:</label> <span class="required">*</span>
+                            <input type="text" id="hoten" name="hoten" placeholder="" ng-model="regGiaSu.hoten" required>
+                            <span class="error" ng-show="registerTutor.hoten.$dirty && registerTutor.hoten.$invalid">
+                                <span ng-show="registerTutor.hoten.$error.required">Vui lòng nhập họ tên</span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="brday" class="">Ngày Sinh:</label> <span class="required">*</span>
+                            <input type="date" id="brday" name="bday" placeholder="" ng-model="regGiaSu.ngaysinh" required>
+                            <span class="error" ng-show="registerTutor.bday.$dirty && registerTutor.bday.$invalid">
+                                <span ng-show="registerTutor.bday.$error.required">Vui lòng nhập ngày sinh</span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label class="">Danh xưng:</label> <span class="required">*</span>
+                            <div class="myRadioInline">
+                                <input type="radio" name="gender" ng-model="regGiaSu.thayco" value="thầy">
+                                <label> Thầy</label>
+                                <input type="radio" name="gender" ng-model="regGiaSu.thayco" value="cô">
+                                <label>Cô </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="">Điện thoại:</label>
+                            <input type="text" id="phone" name="phone" placeholder="" ng-model="regGiaSu.sdt">
+                            <!-- <span class="error" ng-show="registerTutor.phone.$dirty && registerTutor.phone.$invalid">
+                                <span ng-show="registerTutor.phone.$error.required">Vui long nhập điện thoại</span>
+                            </span> -->
+                        </div>
+                        <div class="form-group">
+                            <label for="diachi" class="">Địa chỉ:</label><span class="required">*</span>        
+                            <input type="text" id="diachi" placeholder="" ng-model="regGiaSu.diachi" required>
+                            <span class="error" ng-show="registerTutor.diachi.$dirty && registerTutor.diachi.$invalid">
+                                <span ng-show="registerTutor.hoten.$error.required">Vui lòng nhập địa chỉ</span>
+                            </span>
+                        </div>
+                        <input type="button" name="previous" class="previous base-text-color action-button" value="Quay Lại" >
+                        <input type="button" name="next" class="next base-text-color action-button" value="Tiếp Tục" />
+                    </fieldset>
+                    <!-- job detail -->
+                    <fieldset>
+                        <div class="">
+                            <label for="work" class="">Nơi công tác:</label>
+                            <input type="text" id="work" placeholder="" ng-model="regGiaSu.noicongtac">
+                        </div>
+                        <div>
+                            <label class="">Nơi dạy</label> <span class="required">*</span>
+                            <div ng-repeat="c in daytai">
+                                <label><input type="checkbox" name="" ng-model="noiday" ng-checked="existDay(c)" ng-click="selNoiDay(c)" /><span></span>
+                                {{c}}</label>
+                            </div>
+                            <!-- <p>noi day: {{regGiaSu.noiday}}</p> -->
+                        </div>
+                        <div class="">
+                            <label class="">Dạy Môn:</label> <span class="required">*</span>
+                            <div class="row">
+                                <div class="col-sm-5 sel-col-left">
+                                    <h4>Chọn môn</h4>
+                                    <label class="checkbox" ng-controller="listMon" ng-repeat="m in monhoc track by m.tenmon"><input type="checkbox" name="" ng-model="daymon" ng-checked="existMon(m.tenmon)" ng-click="selDayMon(m.tenmon)" /><span></span>
+                                    {{m.tenmon}}</label>
+                                </div>
+                                <div class="col-sm-1">
+                                    <img id="arrow" src="./images/icon/ArrowRight_50.png" alt="right arrow">
+                                </div>
+                                <div class="col-sm-5 sel-col-right">
+                                    <h4>Môn đã chọn</h4>
+                                    <label class="checkbox" ng-repeat="m in regGiaSu.daymon"><input type="checkbox" name="" ng-model="daymon" ng-checked="existMon(m)" ng-click="deleteMon(m)" /><span></span>
+                                    {{m}}</label>
+                                </div>
+                            </div>
+<!--                             <p>{{regGiaSu.daymon}}</p> -->
+                        </div>
+                        <div class="">
+                            <label for="exp" class="">Kinh nghiệm:</label>
+                            <textarea class="" type="text" id="exp" placeholder="" ng-model="regGiaSu.kinhnghiem" cols="5"></textarea>
+                        </div>
+                        <input type="button" name="previous" class="previous base-text-color action-button" value="Quay Lại" >
+                        <button class="base-text-color action-button" type="submit">Đăng kí</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="post-item P30 box" ng-controller="listMon">
+                <!-- {{regGiaSu.ngaysinh}} {{regGiaSu.thayco}} {{regGiaSu.noiday}} -->
+
+                <!-- <form>
+                <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date"></md-datepicker>
+                </form> -->
+                <h2 class="title">
+                    <!-- <img src="images/logo.png" alt="demo" /> -->
+                        Tìm kiếm gia sư, học sinh dễ dàng hơn                   
+                    
+                </h2>
+                <p>
+                    Bạn có thể dễ dàng tìm kiếm gia sư hoặc học sinh thông qua môn học, vị trí của nơi bạn đang ở
+                </p>
+
+                <h5>Bạn là học sinh</h5>
+
+                <p>
+                    Hãy đăng ký tài khoản để tìm gia sư và tương tác ngay với gia sư phù hợp
+                </p>
+                <h5>Bạn là gia sư</h5>
+
+                <p>
+                    Hãy đăng ký tài khoản để tìm học sinh và quản bá hình ảnh của bản thân
+                </p>
+
+                
+
+                <!-- <a href="#" class="custom-btn big colored" style="margin-top: 10px;">Join Us Now</a> -->
+            </div>
+        </div>
+    </div>
+    <div class="row matchHeight-container">
+    </div>
+<!-- google place lib -->
+<!-- <script>
+    function initAutocomplete() {
+        // create autocomplte obj
+        autocomplete = new google.maps.places.Autocomplete(
+            (document.getElementById('diachi')),
+            {types: ['geocode']});
+        autocomplete.addListener('place_changed', getInput);
+    }
+    function getInput(){
+        var diachi = autocomplete.getPlace().formatted_address;
+        document.getElementById('diachi').value = diachi;
+        console.log('getInput', diachi);
+        // return diachi;
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?signed_in=false&libraries=places&callback=initAutocomplete" async defer></script> -->
